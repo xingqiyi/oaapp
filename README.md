@@ -44,6 +44,14 @@ react-native run-android // android
 - [Eslint](https://github.com/eslint/eslint) is a tool for identifying and reporting on patterns found in reading application code.
 - [react-native-exceptions-manager](https://github.com/Richard-Cao/react-native-exceptions-manager) for handling crashes in release version.
 
+
+## use eslint in react-native
+
+1. init eslint
+```bash
+eslint --init
+```
+
 ## Development Workflow
 
 ### Run Test
