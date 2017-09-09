@@ -7,7 +7,7 @@ const Item = List.Item;
 const Brief = Item.Brief;
 
 
-export default class MineScreen extends React.Component<any, any> {
+export default class MineScreen extends React.Component {
   // static navigationOptions = {
   //   title: '我的',
   //   // Note: By default the icon is only shown on iOS. Search the showIcon option below.
