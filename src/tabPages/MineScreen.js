@@ -26,7 +26,7 @@ export default class MineScreen extends React.Component {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
-        <List renderHeader={() => '左侧无icon22'}>
+        <List renderHeader={() => '左侧无icon2223'}>
           <Item data-seed="logId">标题文字点击无反馈，文字超长则隐藏，文字超长则隐藏</Item>
           <Item wrap>文字超长折行文字超长折行文字超长折行文字超长折行文字超长折行</Item>
           <Item disabled extra="箭头向右" arrow="horizontal" onClick={() => { }}>
