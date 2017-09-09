@@ -1,0 +1,3 @@
+rootProject.name = 'OAApp'
+
+include ':app'
