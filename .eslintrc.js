@@ -3,11 +3,15 @@ module.exports = {
         "es6": true,
         "node": true
     },
+
+    "parser": "babel-eslint",
+
     // "extends": "eslint:recommended",
     "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:import/errors"],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
+            "modules":true,
             "jsx": true
         },
         "sourceType": "module"
@@ -18,6 +22,11 @@ module.exports = {
         // "react-native"
     ],
     "rules": {
+
+
+        "react/display-name": [0],
+
+
         "no-alert": 0,
 
         "no-console": 0,
