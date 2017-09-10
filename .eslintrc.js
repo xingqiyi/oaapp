@@ -24,7 +24,7 @@ module.exports = {
 
         "no-unused-vars": 1,//不能有声明后未被使用的变量或参数
 
-
+        "linebreak-style":0,
 
         "indent": [
             "error",
