@@ -2,8 +2,6 @@
 
 ## react-native
 
- 
-
 ```
 node4+ npm3+
 
@@ -12,10 +10,8 @@ npm i
 npm start
 
 react-native run-ios // ios
-
 react-native run-android // android
 ```
-
 
 
 ## use antd-mobile in react-native project
@@ -31,7 +27,6 @@ react-native run-android // android
   ```json
   {"plugins": [["import", { "libraryName": "antd-mobile" }]]}
   ```
-
 
 
  ## Application Architecture
@@ -52,6 +47,14 @@ react-native run-android // android
 eslint --init
 ```
 
+2. Lint
+检查 src/ 以及 更目录 .js文件
+
+```shell
+npm run lint
+```
+
+
 ## Development Workflow
 
 ### Run Test
@@ -66,12 +69,5 @@ npm test
 npm run format
 ```
 
-### Run Lint
-
-检查 src/ 以及 更目录 .js文件
-
-```shell
-npm run lint
-```
 
 
