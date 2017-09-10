@@ -54,9 +54,6 @@ eslint --init
 npm run lint
 ```
 
-3. --fix
-
-
 ## Development Workflow
 
 ### Run Test
