@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 
 import React from 'react';
@@ -23,6 +24,8 @@ export default class MsgScreen extends React.Component {
 	}
 }
 =======
+=======
+>>>>>>> Stashed changes
 
 import React from 'react';
 import { Button } from 'react-native';
@@ -46,4 +49,7 @@ export default class MsgScreen extends React.Component {
 		);
 	}
 }
+<<<<<<< Updated upstream
 >>>>>>> dev
+=======
+>>>>>>> Stashed changes
