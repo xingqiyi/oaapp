@@ -54,11 +54,8 @@ eslint --init
 npm run lint
 ```
 
-<<<<<<< Updated upstream
 3. --fix
 
-=======
->>>>>>> Stashed changes
 
 ## Development Workflow
 
