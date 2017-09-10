@@ -1710,6 +1710,10 @@ eslint-plugin-jsx-a11y@^5.1.1:
     emoji-regex "^6.1.0"
     jsx-ast-utils "^1.4.0"
 
+eslint-plugin-react-native@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/eslint-plugin-react-native/-/eslint-plugin-react-native-3.1.0.tgz#03f95f959bff7a8267b5472cb87d010e346f7224"
+
 eslint-plugin-react@^7.3.0:
   version "7.3.0"
   resolved "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-7.3.0.tgz#ca9368da36f733fbdc05718ae4e91f778f38e344"
@@ -3688,8 +3692,8 @@ parse5@^1.5.1:
   resolved "https://registry.npmjs.org/parse5/-/parse5-1.5.1.tgz#9b7f3b0de32be78dc2401b17573ccaf0f6f59d94"
 
 parseurl@~1.3.0, parseurl@~1.3.1:
-  version "1.3.1"
-  resolved "https://registry.npmjs.org/parseurl/-/parseurl-1.3.1.tgz#c8ab8c9223ba34888aa64a297b28853bec18da56"
+  version "1.3.2"
+  resolved "https://registry.npmjs.org/parseurl/-/parseurl-1.3.2.tgz#fc289d4ed8993119460c156253262cdc8de65bf3"
 
 path-exists@^2.0.0:
   version "2.1.0"

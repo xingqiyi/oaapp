@@ -13,8 +13,9 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react",
-        "react-native"
+        "react"
+        // ,
+        // "react-native"
     ],
     "rules": {
         "no-alert": 0,
