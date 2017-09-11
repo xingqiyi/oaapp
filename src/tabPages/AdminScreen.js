@@ -4,7 +4,7 @@ import { View, Button } from 'react-native';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-	navigation: PropTypes.func,
+	navigation: PropTypes.object,
 };
 
 export default class AdminScreen extends React.Component {

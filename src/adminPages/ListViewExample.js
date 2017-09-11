@@ -8,7 +8,7 @@ import Api from '../utils/api';
 import { ScrollView, View, Text } from 'react-native';
 
 const propTypes = {
-	navigation: PropTypes.func,
+	navigation: PropTypes.object,
 };
 
 
