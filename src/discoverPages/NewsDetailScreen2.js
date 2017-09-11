@@ -1,10 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Api from '../utils/api';
 
 // import { View, Text } from "react-native";
 
 import { ScrollView, View, Text } from 'react-native';
+
+const propTypes = {
+	navigation: PropTypes.func,
+};
+NewsDetailScreen2.propTypes = propTypes;
+
 
 export default class NewsDetailScreen2 extends React.Component {
 	static navigationOptions = {

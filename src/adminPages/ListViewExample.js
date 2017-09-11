@@ -10,10 +10,10 @@ import { ScrollView, View, Text } from 'react-native';
 const propTypes = {
 	navigation: PropTypes.func,
 };
-NewsDetailScreen2.propTypes = propTypes;
+ListViewExample.propTypes = propTypes;
 
 
-export default class NewsDetailScreen2 extends React.Component {
+export default class ListViewExample extends React.Component {
 	static navigationOptions = {
 		title: '新闻详情2'
 	};
