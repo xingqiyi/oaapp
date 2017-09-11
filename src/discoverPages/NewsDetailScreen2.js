@@ -8,10 +8,17 @@ import Api from '../utils/api';
 import { ScrollView, View, Text } from 'react-native';
 
 const propTypes = {
-	navigation: PropTypes.func,
+	navigation: PropTypes.object,
 };
 
 
+/**
+ * 
+ * 
+ * @export
+ * @class NewsDetailScreen2
+ * @extends {React.Component}
+ */
 export default class NewsDetailScreen2 extends React.Component {
 	static navigationOptions = {
 		title: '新闻详情2'
@@ -38,7 +45,9 @@ export default class NewsDetailScreen2 extends React.Component {
 		return (
 			<ScrollView>
 
+
 				<View style={[{ margin: 10 }]}>
+					
 					<Text>请求后台数据示例:</Text>
 					<Text>fetch:</Text>
 					<Text>
