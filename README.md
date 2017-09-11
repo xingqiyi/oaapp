@@ -53,7 +53,10 @@ eslint --init
 ```shell
 npm run lint
 ```
-3. g4.5
+3. format
+```
+npm run format
+```
 
 ## Development Workflow
 
@@ -63,11 +66,6 @@ npm run lint
 npm test
 ```
 
-### Format Code
-
-```
-npm run format
-```
 
 
 
