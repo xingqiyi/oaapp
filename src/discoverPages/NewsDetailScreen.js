@@ -15,7 +15,6 @@ const data = Array.from(new Array(9)).map((_val, i) => ({
 const propTypes = {
 	navigation: PropTypes.func,
 };
-NewsDetailScreen.propTypes = propTypes;
 
 export default class NewsDetailScreen extends React.Component {
 	static navigationOptions = {
@@ -87,3 +86,5 @@ export default class NewsDetailScreen extends React.Component {
 		);
 	}
 }
+
+NewsDetailScreen.propTypes = propTypes;

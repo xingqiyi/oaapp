@@ -10,7 +10,6 @@ import { ScrollView, View, Text } from 'react-native';
 const propTypes = {
 	navigation: PropTypes.func,
 };
-NewsDetailScreen2.propTypes = propTypes;
 
 
 export default class NewsDetailScreen2 extends React.Component {
@@ -51,3 +50,5 @@ export default class NewsDetailScreen2 extends React.Component {
 		);
 	}
 }
+
+NewsDetailScreen2.propTypes = propTypes;

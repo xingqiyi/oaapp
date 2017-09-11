@@ -10,7 +10,6 @@ import { ScrollView, View, Text } from 'react-native';
 const propTypes = {
 	navigation: PropTypes.func,
 };
-ListViewExample.propTypes = propTypes;
 
 
 export default class ListViewExample extends React.Component {
@@ -51,3 +50,6 @@ export default class ListViewExample extends React.Component {
 		);
 	}
 }
+
+ListViewExample.propTypes = propTypes;
+

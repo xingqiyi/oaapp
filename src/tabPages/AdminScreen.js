@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 const propTypes = {
 	navigation: PropTypes.func,
 };
-AdminScreen.propTypes = propTypes;
 
 export default class AdminScreen extends React.Component {
 	render() {
@@ -28,5 +27,8 @@ export default class AdminScreen extends React.Component {
 		);
 	}
 }
+
+AdminScreen.propTypes = propTypes;
+
 
 
