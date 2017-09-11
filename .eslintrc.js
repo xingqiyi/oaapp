@@ -1,6 +1,8 @@
 module.exports = {
     "env": {
         "es6": true,
+
+        "browser": true,
         "node": true
     },
 
@@ -11,7 +13,7 @@ module.exports = {
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
-            "modules":true,
+            "modules": true,
             "jsx": true
         },
         "sourceType": "module"
@@ -24,6 +26,8 @@ module.exports = {
     "rules": {
 
 
+
+
         "react/display-name": [0],
 
 
@@ -33,7 +37,7 @@ module.exports = {
 
         "no-unused-vars": 1,//不能有声明后未被使用的变量或参数
 
-        "linebreak-style":0,
+        "linebreak-style": 0,
 
         "indent": [
             "error",
