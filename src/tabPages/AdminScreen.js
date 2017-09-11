@@ -1,15 +1,20 @@
-
 import React from 'react';
 import { View, Button } from 'react-native';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-	navigation: PropTypes.object,
+	navigation: PropTypes.object
 };
 
+/**
+ *
+ *
+ * @export
+ * @class AdminScreen
+ * @extends {React.Component}
+ */
 export default class AdminScreen extends React.Component {
 	render() {
-
 		const { navigate } = this.props.navigation;
 
 		return (
@@ -23,12 +28,8 @@ export default class AdminScreen extends React.Component {
 					title="ListViewExample"
 				/>
 			</View>
-
 		);
 	}
 }
 
 AdminScreen.propTypes = propTypes;
-
-
-
