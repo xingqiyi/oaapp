@@ -16,7 +16,6 @@ export default class NewsDetailScreen2 extends React.Component {
 		this.state = { showText: 'aaa' };
 	}
 
-
 	componentDidMount() {
 		console.log('componentDidMount');
 		Api.getRepos()
@@ -24,14 +23,12 @@ export default class NewsDetailScreen2 extends React.Component {
 				this.setState({ showText: JSON.stringify(res) });
 			});
 	}
-
 	componentWillUnmount() {
 		console.log('componentWillUnmount');
 	}
 
 	render() {
 		const { params } = this.props.navigation.state;
-
 		return (
 			<ScrollView>
 
