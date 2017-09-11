@@ -62,6 +62,7 @@ export default class NewsDetailScreen extends React.Component {
 					title="新闻详情2"
 				/> */}
 
+
 					<Flex>
 						<Button
 							className="btn"

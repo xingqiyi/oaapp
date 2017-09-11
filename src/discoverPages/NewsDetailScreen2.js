@@ -11,6 +11,7 @@ const propTypes = {
 	navigation: PropTypes.object,
 };
 
+  
 
 /**
  * 
@@ -36,14 +37,13 @@ export default class NewsDetailScreen2 extends React.Component {
 				this.setState({ showText: JSON.stringify(res) });
 			});
 	}
-	componentWillUnmount() {
-		console.log('componentWillUnmount');
-	}
+
 
 	render() {
 		const { params } = this.props.navigation.state;
 		return (
 			<ScrollView>
+
 
 
 				<View style={[{ margin: 10 }]}>

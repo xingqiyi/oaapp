@@ -30,6 +30,7 @@ export default class ListViewExample extends React.Component {
 
 	componentDidMount() {
 		console.log('componentDidMount');
+
 		Api.getRepos().then(res => {
 			this.setState({ showText: JSON.stringify(res) });
 		});

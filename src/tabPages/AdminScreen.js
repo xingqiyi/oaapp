@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Button } from 'react-native';
 import PropTypes from 'prop-types';
 
+
 const propTypes = {
 	navigation: PropTypes.object
 };
