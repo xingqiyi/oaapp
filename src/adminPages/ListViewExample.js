@@ -1,3 +1,9 @@
+/*
+ * @Author: shuaixc 
+ * @Date: 2017-09-12 09:24:43 
+ * @Last Modified by:   shuaixc 
+ * @Last Modified time: 2017-09-12 09:24:43 
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 
