@@ -5,7 +5,6 @@ import NewsDetailScreen2 from './discoverPages/NewsDetailScreen2';
 
 import ListViewExample from './adminPages/ListViewExample';
 
-
 const OAApp = StackNavigator(
 	{
 		Home: { screen: MainScreenNavigator },

@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
 	}
 });
 
+
 const MainScreenNavigator = TabNavigator(
 	{
 		Msg: {
