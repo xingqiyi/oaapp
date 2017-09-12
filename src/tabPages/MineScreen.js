@@ -1,3 +1,9 @@
+/*
+ * @Author: shuaixc 
+ * @Date: 2017-09-12 22:15:38 
+ * @Last Modified by: shuaixc
+ * @Last Modified time: 2017-09-12 22:16:43
+ */
 /* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
 import { Image, ScrollView, View } from 'react-native';
@@ -8,6 +14,13 @@ const Brief = Item.Brief;
 
  
 
+/**
+ * 
+ * 
+ * @export
+ * @class MineScreen
+ * @extends {React.Component}
+ */
 export default class MineScreen extends React.Component {
 	// static navigationOptions = {
 	//   title: '我的',

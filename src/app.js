@@ -1,3 +1,9 @@
+/*
+ * @Author: shuaixc 
+ * @Date: 2017-09-12 22:14:18 
+ * @Last Modified by:   shuaixc 
+ * @Last Modified time: 2017-09-12 22:14:18 
+ */
 import { StackNavigator } from 'react-navigation';
 import MainScreenNavigator from './MainScreenNavigator';
 import NewsDetailScreen from './discoverPages/NewsDetailScreen';
