@@ -21,6 +21,13 @@ let index = data.length - 1;
 const NUM_SECTIONS = 5;
 const NUM_ROWS_PER_SECTION = 5;
 let pageIndex = 0;
+/**
+ * 
+ * 
+ * @export
+ * @class ListViewExample
+ * @extends {React.Component}
+ */
 export default class ListViewExample extends React.Component {
 	constructor(props) {
 		super(props);

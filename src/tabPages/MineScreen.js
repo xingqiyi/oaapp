@@ -1,10 +1,4 @@
-/*
- * @Author: shuaixc 
- * @Date: 2017-09-12 22:15:38 
- * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-13 00:19:19
- */
-/* tslint:disable:jsx-no-multiline-js */
+ 
 import React from 'react';
 import { Image, ScrollView, View } from 'react-native';
 import { List } from 'antd-mobile';
