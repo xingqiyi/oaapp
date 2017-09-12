@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-12 22:15:38 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-12 22:16:43
+ * @Last Modified time: 2017-09-13 00:19:19
  */
 /* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
@@ -40,7 +40,7 @@ export default class MineScreen extends React.Component {
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
 			>
-				<List renderHeader={() => '左侧无icon2223'}>
+				<List renderHeader={() => '左侧无icon2'}>
 					<Item data-seed="logId">标题文字点击无反馈，文字超长则隐藏，文字超长则隐藏</Item>
 					<Item wrap>文字超长折行文字超长折行文字超长折行文字超长折行文字超长折行</Item>
 					<Item disabled extra="箭头向右" arrow="horizontal" onClick={() => { }}>
