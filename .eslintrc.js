@@ -53,14 +53,14 @@ module.exports = {
             "always"
         ]
     }
-, // 这里设置可能用到的全局变量
-"globals": {
-  "window": true,
-  "fetch": true,
-  "__DEV__": true,
-  "__APP__": true,
-  "__ANDROID__": true,
-  "__IOS__": true
-}
+    , // 这里设置可能用到的全局变量
+    "globals": {
+        "window": true,
+        "fetch": true,
+        "__DEV__": true,
+        "__APP__": true,
+        "__ANDROID__": true,
+        "__IOS__": true
+    }
 
 };
