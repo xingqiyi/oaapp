@@ -1,26 +1,34 @@
 /*
  * @Author: shuaixc 
- * @Date: 2017-09-13 22:51:50 
+ * @Date: 2017-09-12 22:14:18 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-13 23:08:25
+ * @Last Modified time: 2017-09-14 00:23:23
  */
+
+ 
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
-import { TabNavigator } from 'react-navigation';
-
-import MsgScreen from './Tabs/MsgScreen';
-import BookScreen from './Tabs/BookScreen';
-import AdminScreen from './Tabs/AdminScreen';
-import DiscoverScreen from './Tabs/DiscoverScreen';
-import MineScreen from './Tabs/MineScreen';
 
 
-// const msgIcon = require('./image/message.png');
-// const bookIcon = require('./image/book.png');
-// const adminIcon = require('./image/admin.png');
-// const discoverIcon = require('./image/discover.png');
-// const mineIcon = require('./image/mine.png');
+import { StackNavigator ,TabNavigator} from 'react-navigation';
 
+
+// import MainScreenNavigator from './MainScreenNavigator';
+
+
+import NewsDetailScreen from '../pages/Discover/NewsDetailScreen';
+import NewsDetailScreen2 from '../pages/Discover/NewsDetailScreen2';
+import ListViewExample from '../pages/Admin/ListViewExample';
+
+
+
+import MsgScreen from './Message';
+import BookScreen from './Book';
+import AdminScreen from './Admin';
+import DiscoverScreen from './Discover';
+import MineScreen from './Mine';
+
+ 
 const msgIcon = require('../image/mine.png');
 const bookIcon = require('../image/mine.png');
 const adminIcon = require('../image/mine.png');
@@ -36,7 +44,7 @@ const styles = StyleSheet.create({
 });
 
 
-const MainScreenNavigator = TabNavigator(
+const TabContainer = TabNavigator(
 	{
 		Msg: {
 			screen: MsgScreen,
@@ -136,4 +144,33 @@ const MainScreenNavigator = TabNavigator(
 
 );
 
-export default MainScreenNavigator;
+
+const App = StackNavigator(	
+	{
+		Home: { screen: TabContainer },
+		NewsDetail: { screen: NewsDetailScreen },
+		NewsDetail2: {
+		// `NewsDetailScreen2`是一个React组件，将作为屏幕的主要内容。
+			screen: NewsDetailScreen2,
+			// 当`ProfileScreen`由StackNavigator加载时，它将被赋予“navigation”属性。
+			// 可选：在Web应用程序中深链接或使用react-navigation导航时，将使用此路径：
+			//  path: 'people/:name',
+			// 从路径中提取动作(action)和路由参数.
+			// 可选：覆盖屏幕的`navigationOptions`（即每个组件中的`navigationOptions`）
+			navigationOptions: ({ navigation }) => ({
+				title: `${navigation.state.params.name}'s Profile'`,
+			}),
+
+		},
+
+		ListViewExample: { screen: ListViewExample },
+
+	}
+	// ,
+	// {
+	// 	mode:'modal',
+	// }
+);
+
+
+export default App;

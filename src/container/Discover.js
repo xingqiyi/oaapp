@@ -1,13 +1,13 @@
 /*
  * @Author: shuaixc 
  * @Date: 2017-09-13 22:53:18 
- * @Last Modified by:   shuaixc 
- * @Last Modified time: 2017-09-13 22:53:18 
+ * @Last Modified by: shuaixc
+ * @Last Modified time: 2017-09-14 00:21:15
  */
 import React from 'react';
 import { View, Text, Button, Image, StyleSheet } from 'react-native';
 
-const bookIcon = require('../../image/logo.png');
+const bookIcon = require('../image/logo.png');
 
 
 const styles = StyleSheet.create({
