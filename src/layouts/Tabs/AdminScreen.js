@@ -1,3 +1,9 @@
+/*
+ * @Author: shuaixc 
+ * @Date: 2017-09-13 22:53:25 
+ * @Last Modified by:   shuaixc 
+ * @Last Modified time: 2017-09-13 22:53:25 
+ */
 import React from 'react';
 import { View, Button } from 'react-native';
 import PropTypes from 'prop-types';

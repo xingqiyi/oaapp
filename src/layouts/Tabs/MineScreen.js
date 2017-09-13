@@ -1,3 +1,9 @@
+/*
+ * @Author: shuaixc 
+ * @Date: 2017-09-13 22:53:33 
+ * @Last Modified by:   shuaixc 
+ * @Last Modified time: 2017-09-13 22:53:33 
+ */
  
 import React from 'react';
 import { Image, ScrollView, View } from 'react-native';

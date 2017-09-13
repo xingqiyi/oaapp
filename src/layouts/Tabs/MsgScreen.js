@@ -1,3 +1,9 @@
+/*
+ * @Author: shuaixc 
+ * @Date: 2017-09-13 22:53:28 
+ * @Last Modified by:   shuaixc 
+ * @Last Modified time: 2017-09-13 22:53:28 
+ */
 import React from 'react';
 import { Button } from 'react-native';
 

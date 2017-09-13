@@ -1,3 +1,9 @@
+/*
+ * @Author: shuaixc 
+ * @Date: 2017-09-13 22:53:51 
+ * @Last Modified by:   shuaixc 
+ * @Last Modified time: 2017-09-13 22:53:51 
+ */
 /* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
 import {View, Text, TouchableHighlight, Image} from 'react-native';

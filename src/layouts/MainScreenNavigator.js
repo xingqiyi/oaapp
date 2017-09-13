@@ -1,12 +1,18 @@
+/*
+ * @Author: shuaixc 
+ * @Date: 2017-09-13 22:51:50 
+ * @Last Modified by: shuaixc
+ * @Last Modified time: 2017-09-13 23:08:25
+ */
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 
-import MsgScreen from './tabPages/MsgScreen';
-import BookScreen from './tabPages/BookScreen';
-import AdminScreen from './tabPages/AdminScreen';
-import DiscoverScreen from './tabPages/DiscoverScreen';
-import MineScreen from './tabPages/MineScreen';
+import MsgScreen from './Tabs/MsgScreen';
+import BookScreen from './Tabs/BookScreen';
+import AdminScreen from './Tabs/AdminScreen';
+import DiscoverScreen from './Tabs/DiscoverScreen';
+import MineScreen from './Tabs/MineScreen';
 
 
 // const msgIcon = require('./image/message.png');
