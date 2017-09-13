@@ -15,11 +15,11 @@ import MineScreen from './tabPages/MineScreen';
 // const discoverIcon = require('./image/discover.png');
 // const mineIcon = require('./image/mine.png');
 
-const msgIcon = require('./image/mine.png');
-const bookIcon = require('./image/mine.png');
-const adminIcon = require('./image/mine.png');
-const discoverIcon = require('./image/mine.png');
-const mineIcon = require('./image/mine.png');
+const msgIcon = require('../image/mine.png');
+const bookIcon = require('../image/mine.png');
+const adminIcon = require('../image/mine.png');
+const discoverIcon = require('../image/mine.png');
+const mineIcon = require('../image/mine.png');
 
 
 const styles = StyleSheet.create({

@@ -1,8 +1,8 @@
 /*
  * @Author: shuaixc 
  * @Date: 2017-09-12 22:14:18 
- * @Last Modified by:   shuaixc 
- * @Last Modified time: 2017-09-12 22:14:18 
+ * @Last Modified by: shuaixc
+ * @Last Modified time: 2017-09-13 22:12:03
  */
 import { StackNavigator } from 'react-navigation';
 import MainScreenNavigator from './MainScreenNavigator';
@@ -30,9 +30,6 @@ const OAApp = StackNavigator(
 		},
 
 		ListViewExample: { screen: ListViewExample },
-
-
-
 
 	}
 	// ,

@@ -1,13 +1,13 @@
 /*
  * @Author: shuaixc 
  * @Date: 2017-09-12 09:25:01 
- * @Last Modified by:   shuaixc 
- * @Last Modified time: 2017-09-12 09:25:01 
+ * @Last Modified by: shuaixc
+ * @Last Modified time: 2017-09-13 22:32:04
  */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Api from '../utils/api';
+import Api from '../../utils/api';
 
 // import { View, Text } from "react-native";
 

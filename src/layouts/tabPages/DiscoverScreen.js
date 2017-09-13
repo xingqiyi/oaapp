@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, Image, StyleSheet } from 'react-native';
 
-const bookIcon = require('../image/logo.png');
+const bookIcon = require('../../image/logo.png');
 
 
 const styles = StyleSheet.create({
