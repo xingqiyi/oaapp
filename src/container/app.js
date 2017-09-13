@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-12 22:14:18 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-14 00:23:23
+ * @Last Modified time: 2017-09-14 00:24:05
  */
 
  
@@ -19,7 +19,6 @@ import { StackNavigator ,TabNavigator} from 'react-navigation';
 import NewsDetailScreen from '../pages/Discover/NewsDetailScreen';
 import NewsDetailScreen2 from '../pages/Discover/NewsDetailScreen2';
 import ListViewExample from '../pages/Admin/ListViewExample';
-
 
 
 import MsgScreen from './Message';
