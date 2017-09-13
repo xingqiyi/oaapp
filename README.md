@@ -28,7 +28,6 @@ react-native run-android // android
   {"plugins": [["import", { "libraryName": "antd-mobile" }]]}
   ```
 
-
  ## Application Architecture
 
 - [Microsoft Code Push](https://github.com/Microsoft/react-native-code-push) for dynamic update.
@@ -65,6 +64,12 @@ npm run format
 ```
 npm test
 ```
+
+## Jest
+
+## react navigation
+
+
 
 
 
