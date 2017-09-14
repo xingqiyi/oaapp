@@ -13,6 +13,7 @@ const sagaMiddleware = createSagaMiddleware();
 middlewares.push(sagaMiddleware);
 /* global __DEV__  */
 if (__DEV__) {
+	console.log('__DEV__');
 	middlewares.push(logger);
 }
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
