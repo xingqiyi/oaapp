@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 22:53:25 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-14 09:48:41
+ * @Last Modified time: 2017-09-14 11:32:26
  */
 import React from 'react';
 import { View } from 'react-native';
@@ -40,7 +40,7 @@ export default class AdminScreen extends React.Component {
 					>
 						ListView
 					</Button>
-					
+
 				</Flex>
 
 
