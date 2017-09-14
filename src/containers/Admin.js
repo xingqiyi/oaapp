@@ -1,13 +1,14 @@
 /*
  * @Author: shuaixc 
  * @Date: 2017-09-13 22:53:25 
- * @Last Modified by:   shuaixc 
- * @Last Modified time: 2017-09-13 22:53:25 
+ * @Last Modified by: shuaixc
+ * @Last Modified time: 2017-09-14 09:48:41
  */
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
+import { Flex, Button } from 'antd-mobile';
 
 const propTypes = {
 	navigation: PropTypes.object
@@ -26,14 +27,27 @@ export default class AdminScreen extends React.Component {
 
 		return (
 			<View>
-				<Button
-					onPress={() => this.props.navigation.navigate('Notifications')}
-					title="管理页面"
-				/>
-				<Button
-					onPress={() => navigate('ListViewExample', { user: 'jim' })}
-					title="ListViewExample"
-				/>
+
+				<Flex>
+					<Button
+						className="btn"
+						type="primary"
+						size="small"
+						inline
+						icon="check-circle-o"
+						style={{ margin: 20 }}
+						onClick={() => navigate('ListViewExample', { user: 'jim' })}
+					>
+						ListView
+					</Button>
+					
+				</Flex>
+
+
+
+
+
+
 			</View>
 		);
 	}
