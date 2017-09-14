@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-12 22:14:18 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-14 00:24:05
+ * @Last Modified time: 2017-09-14 22:14:39
  */
 
  
@@ -21,7 +21,7 @@ import NewsDetailScreen2 from '../pages/Discover/NewsDetailScreen2';
 import ListViewExample from '../pages/Admin/ListViewExample';
 
 
-import MsgScreen from './Message';
+import ChatScreen from './Chat';
 import BookScreen from './Book';
 import AdminScreen from './Admin';
 import DiscoverScreen from './Discover';
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 const TabContainer = TabNavigator(
 	{
 		Msg: {
-			screen: MsgScreen,
+			screen: ChatScreen,
 			navigationOptions: {
 				title: '消息',
 				// Note: By default the icon is only shown on iOS. Search the showIcon option below.
