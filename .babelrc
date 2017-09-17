@@ -1,4 +1,14 @@
 {
-  "presets": ["react-native"],
-  "plugins": [["import", { "libraryName": "antd-mobile" }]]
+  "sourceMaps": true,
+  "presets": [
+    "react-native"
+  ],
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd-mobile"
+      }
+    ]
+  ]
 }
