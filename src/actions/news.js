@@ -1,7 +1,7 @@
 
 import * as types from '../constants/ActionTypes';
 
-export function requestArticleList(
+export function requestNewsList(
 	isRefreshing,
 	loading,
 	typeId,
@@ -9,7 +9,7 @@ export function requestArticleList(
 	page = 1
 ) {
 	return {
-		type: types.REQUEST_ARTICLE_LIST,
+		type: types.REQUEST_NEWS_LIST,
 		isRefreshing,
 		loading,
 		isLoadMore,
@@ -18,19 +18,19 @@ export function requestArticleList(
 	};
 }
 
-export function fetchArticleList(isRefreshing, loading, isLoadMore = false) {
+export function fetchNewsList(isRefreshing, loading, isLoadMore = false) {
 	return {
-		type: types.FETCH_ARTICLE_LIST,
+		type: types.FETCH_NEWS_LIST,
 		isRefreshing,
 		loading,
 		isLoadMore
 	};
 }
 
-export function receiveArticleList(articleList, typeId) {
+export function receiveNewsList(newsList, typeId) {
 	return {
-		type: types.RECEIVE_ARTICLE_LIST,
-		articleList,
+		type: types.RECEIVE_NEWS_LIST,
+		newsList,
 		typeId
 	};
 }

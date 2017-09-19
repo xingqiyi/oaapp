@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
+import { Flex, Button } from 'antd-mobile';
+
+
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -26,7 +29,7 @@ class NewsList extends React.Component {
 		const { newsActions } = this.props;
 		console.info('newsList,newsAction:', newsActions);
 
-		newsActions.requestArticleList(false, true, 2);
+		newsActions.requestNewsList(false, true, 2);
 
 
 
@@ -43,6 +46,24 @@ class NewsList extends React.Component {
 		return (
 			<View>
 				<Text>Hello, my first Chat App!</Text>
+
+
+				{/* <Button
+					className="btn"
+					type="primary"
+					size="small"
+					inline
+					icon="check-circle-o"
+					style={{
+						margin: 20
+					}}
+					onClick={() => 
+
+					}>
+					ListViewExample
+				</Button> */}
+
+
 			</View>
 		);
 	}

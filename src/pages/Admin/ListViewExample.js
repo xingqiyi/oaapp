@@ -1,13 +1,13 @@
 /*
  * @Author: shuaixc 
- * @Date: 2017-09-13 22:53:51 
- * @Last Modified by:   shuaixc 
- * @Last Modified time: 2017-09-13 22:53:51 
+ * @Date: 2017-09-13 10:53:51 
+ * @Last Modified by: shuaixc
+ * @Last Modified time: 2017-09-19 15:22:34
  */
 /* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
-import {View, Text, TouchableHighlight, Image} from 'react-native';
-import {ListView} from 'antd-mobile';
+import { View, Text, TouchableHighlight, Image } from 'react-native';
+import { ListView } from 'antd-mobile';
 const data = [
 	{
 		img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
@@ -60,7 +60,7 @@ export default class ListViewExample extends React.Component {
 		};
 		this.onEndReached = (_event) => {
 			// load new data
-			this.setState({isLoading: true});
+			this.setState({ isLoading: true });
 			setTimeout(() => {
 				this._genData(++pageIndex);
 				this.setState({
@@ -112,8 +112,8 @@ export default class ListViewExample extends React.Component {
 				borderTopColor: '#ECECED',
 				borderBottomWidth: 1,
 				borderBottomColor: '#ECECED'
-			}}/>);
-		const row = (_rowData, sectionID, rowID, highlightRow = (_sId, _rId) => {}) => {
+			}} />);
+		const row = (_rowData, sectionID, rowID, highlightRow = (_sId, _rId) => { }) => {
 			if (index < 0) {
 				index = data.length - 1;
 			}
@@ -160,10 +160,10 @@ export default class ListViewExample extends React.Component {
 									]}
 									source={{
 										uri: obj.img
-									}}/>
+									}} />
 								<View>
 									<Text>{obj.des}
-																				- {rowID}</Text>
+										- {rowID}</Text>
 									<Text>{this.props.highlightRow}</Text>
 									<Text>
 										<Text
@@ -200,7 +200,7 @@ export default class ListViewExample extends React.Component {
 			renderSeparator={separator}
 			pageSize={4}
 			onEndReached={this.onEndReached}
-			onEndReachedThreshold={10}/>);
+			onEndReachedThreshold={10} />);
 	}
 }
 export const title = 'ListView';

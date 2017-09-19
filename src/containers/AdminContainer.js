@@ -1,8 +1,8 @@
 /*
  * @Author: shuaixc
- * @Date: 2017-09-13 22:53:25
+ * @Date: 2017-09-13 10:53:25
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-17 10:55:11
+ * @Last Modified time: 2017-09-19 15:22:23
  */
 import React from 'react';
 import { connect } from 'react-redux';
@@ -41,7 +41,7 @@ class AdminScreen extends React.Component {
 							margin: 20
 						}}
 						onClick={() => navigate('ListViewExample', { user: 'jim' })}>
-						ListView
+						ListViewExample
 					</Button>
 
 					<Button
@@ -53,7 +53,7 @@ class AdminScreen extends React.Component {
 						style={{ margin: 20 }}
 						onClick={() => navigate('NewsDetail', { user: 'jim' })}
 					>
-						新闻
+						newsdetail
 					</Button>
 
 
