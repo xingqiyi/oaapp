@@ -8,6 +8,7 @@ const propTypes = {
 	newsActions: PropTypes.object,
 };
 
+
 class NewsList extends React.Component {
 
 	constructor(props) {
@@ -19,16 +20,17 @@ class NewsList extends React.Component {
 		// 	typeIds: [],
 		// 	typeList: {}
 		// };
-
-
 	}
 
 	componentDidMount() {
 		const { newsActions } = this.props;
 		console.info('newsList,newsAction:', newsActions);
 
-
 		newsActions.requestArticleList(false, true, 2);
+
+
+
+
 
 	}
 	render() {
