@@ -2,12 +2,15 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 10:53:51 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-19 17:58:31
+ * @Last Modified time: 2017-09-20 16:28:18
  */
 /* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { ListView } from 'antd-mobile';
+
+import { Grid, Button, Flex } from 'antd-mobile';
+
 
 import PropTypes from 'prop-types';
 
@@ -63,10 +66,12 @@ data = [
 
 
 let index = data.length - 1;
-const NUM_SECTIONS = 5;
+const NUM_SECTIONS = 4;
 const NUM_ROWS_PER_SECTION = 5;
 let pageIndex = 0;
 
+
+let pageNum = 1;
 
 
 
@@ -152,12 +157,14 @@ class NewsList extends React.Component {
 		const { newsActions } = this.props;
 		console.info('newsList,newsAction:', newsActions);
 
-		newsActions.requestNewsList(false, true, 2);
+		newsActions.requestNewsList(false, true, pageNum);
 	}
 
 	onRefresh = () => {
+		pageNum = Math.floor(5 * Math.random());
+
 		const { newsActions } = this.props;
-		newsActions.requestNewsList(false, true, 2);
+		newsActions.requestNewsList(false, true, pageNum);
 	};
 
 
@@ -168,7 +175,7 @@ class NewsList extends React.Component {
 		console.info(news);
 
 		if (Object.keys(news.newsList).length > 0) {
-			data = news.newsList[2];
+			data = news.newsList[pageNum];
 		}
 
 
@@ -177,7 +184,7 @@ class NewsList extends React.Component {
 			key={`${sectionID}-${rowID}`}
 			style={{
 				backgroundColor: '#F5F5F9',
-				height: 8,
+				height: 5,
 				borderStyle: 'solid',
 				borderTopWidth: 1,
 				borderTopColor: '#ECECED',
@@ -247,31 +254,52 @@ class NewsList extends React.Component {
 							</View>
 						</View>
 					</TouchableHighlight>
-				</View>
+				</View >
 			);
 		};
 		const loadingTxt = this.state.isLoading
 			? 'Loading...'
 			: 'Loaded';
-		return (<ListView
-			dataSource={this.state.dataSource}
-			renderHeader={() => <Text style={[{
-				padding: 8
-			}
-			]}>header</Text>}
-			renderFooter={() => <Text style={[{
-				padding: 30,
-				textAlign: 'center'
-			}
-			]}>
-				{loadingTxt}
-			</Text>}
-			renderSectionHeader={this.renderSectionHeader}
-			renderRow={row}
-			renderSeparator={separator}
-			pageSize={4}
-			onEndReached={this.onEndReached}
-			onEndReachedThreshold={10} />);
+		return (
+
+			<View>
+
+				<Flex>
+					<Button
+						className="btn"
+						type="primary"
+						size="small"
+						inline
+						icon="check-circle-o"
+						style={{ margin: 20 }}
+						onClick={() => this.onRefresh()}
+					>
+						refresh
+					</Button>
+				</Flex>
+
+				<ListView
+					dataSource={this.state.dataSource}
+					renderHeader={() => <Text style={[{
+						padding: 8
+					}
+					]}>header</Text>}
+					renderFooter={() => <Text style={[{
+						padding: 30,
+						textAlign: 'center'
+					}
+					]}>
+						{loadingTxt}
+					</Text>}
+					renderSectionHeader={this.renderSectionHeader}
+					renderRow={row}
+					renderSeparator={separator}
+					pageSize={10}
+				/*onEndReached={this.onEndReached}
+				onEndReachedThreshold={10}*/
+				/>
+			</View>
+		);
 	}
 }
 export const title = 'ListView';
