@@ -2,12 +2,12 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 08:53:28 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-19 15:23:27
+ * @Last Modified time: 2017-09-20 16:45:53
  */
 import React from 'react';
 import { Button } from 'react-native';
 
-export default class ChatScreen extends React.Component {
+export default class ChatContainer extends React.Component {
 	// static navigationOptions = {
 	//   // tabBarLabel: "消息",
 	//   // headerTitle: "消息",
