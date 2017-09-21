@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-20 11:47:24
+ * @Last Modified time: 2017-09-21 10:27:41
  */
 
 import React from 'react';
@@ -15,6 +15,10 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import NewsDetailScreen from '../pages/Discover/NewsDetailScreen';
 import NewsDetailScreen2 from '../pages/Discover/NewsDetailScreen2';
 import ListViewExample from '../pages/Admin/ListViewExample';
+import FlatListExample from '../pages/Admin/FlatListExample';
+import SectionListExample from '../pages/Admin/SectionListExample';
+
+
 
 import ChatContainer from './ChatContainer';
 import BookContainer from './BookContainer';
@@ -151,6 +155,11 @@ const App = StackNavigator({
 		navigationOptions: ({ navigation }) => ({ title: `${navigation.state.params.name}'s Profile'` })
 	},
 
+
+
+	FlatListExample: {
+		screen: FlatListExample
+	},
 	ListViewExample: {
 		screen: ListViewExample
 	}

@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-13 10:53:25
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-19 15:22:23
+ * @Last Modified time: 2017-09-21 10:35:00
  */
 import React from 'react';
 import { connect } from 'react-redux';
@@ -31,31 +31,49 @@ class AdminScreen extends React.Component {
 			<View>
 
 				<Flex>
-					<Button
-						className="btn"
-						type="primary"
-						size="small"
-						inline
-						icon="check-circle-o"
-						style={{
-							margin: 20
-						}}
-						onClick={() => navigate('ListViewExample', { user: 'jim' })}>
-						ListViewExample
-					</Button>
 
-					<Button
-						className="btn"
-						type="primary"
-						size="small"
-						inline
-						icon="check-circle-o"
-						style={{ margin: 20 }}
-						onClick={() => navigate('NewsDetail', { user: 'jim' })}
-					>
-						newsdetail
-					</Button>
 
+					<Flex.Item style={{ paddingLeft: 0, paddingRight: 0 }}>
+						<Button
+							className="btn"
+							type="primary"
+							size="small"
+							inline
+							icon="check-circle-o"
+							style={{
+								margin: 10
+							}}
+							onClick={() => navigate('FlatListExample', { user: 'jim' })}>
+							FlatListExample
+						</Button>
+					</Flex.Item>
+					<Flex.Item style={{ paddingLeft: 0, paddingRight: 0 }}>
+						<Button
+							className="btn"
+							type="primary"
+							size="small"
+							inline
+							icon="check-circle-o"
+							style={{
+								margin: 5
+							}}
+							onClick={() => navigate('ListViewExample', { user: 'jim' })}>
+							ListViewExample
+						</Button>
+					</Flex.Item>
+					<Flex.Item style={{ paddingLeft: 0, paddingRight: 0 }}>
+						<Button
+							className="btn"
+							type="primary"
+							size="small"
+							inline
+							icon="check-circle-o"
+							style={{ margin: 10 }}
+							onClick={() => navigate('NewsDetail', { user: 'jim' })}
+						>
+							newsdetail
+						</Button>
+					</Flex.Item>
 
 				</Flex>
 
