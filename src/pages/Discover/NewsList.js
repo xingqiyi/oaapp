@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 10:53:51 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-20 16:28:18
+ * @Last Modified time: 2017-09-21 16:43:31
  */
 /* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
@@ -11,35 +11,14 @@ import { ListView } from 'antd-mobile';
 
 import { Grid, Button, Flex } from 'antd-mobile';
 
-
 import PropTypes from 'prop-types';
-
 
 const propTypes = {
 	news: PropTypes.object,
-	newsActions: PropTypes.object,
+	newsActions: PropTypes.object
 };
 
-
-
 let data;
-
-// data = [
-// 	{
-// 		img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-// 		title: 'Meet hotel',
-// 		des: '不是所有的兼职汪都需要风吹日晒'
-// 	}, {
-// 		img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
-// 		title: 'McDonald\'s invites you',
-// 		des: '不是所有的兼职汪都需要风吹日晒'
-// 	}, {
-// 		img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
-// 		title: 'Eat the week',
-// 		des: '不是所有的兼职汪都需要风吹日晒'
-// 	}
-// ];
-
 
 data = [
 	// { 'date': '2017-09-19 13:11:19', 'ct': '2017-09-19 16:02:10.407', 'weixinNum': 'nvshengu', 'url': 'http://mp.weixin.qq.com/s?src=11&timestamp=1505808004&ver=401&signature=n2UGVCXA15E51nrSDmaNhF818wCGbjBO8bZWEIl3GPc2D*gRE-txUXn-N33ZLWXG7-IIjP9PqvRaIsSVXYvMNqiM1dUBn0dZYx5yT60fgFYv6Y8PKuniIX*2W-IGL1nN&new=1', 'id': 'a0e5cbe9b925a1b4b2b28de6e81841b2', 'typeName': '段子手', 'title': '厕所贴的对联，差点没把我笑死！', 'contentImg': 'http://mmbiz.qpic.cn/mmbiz/5XFlTUibQYoLZug8bUDEgD3UAWR9ibJ9CDyZQXBoeLHrdZbm9oCc9QKUNlXXFm2JD9kDzCiaaa3lcbDanI28zrZow/640', '_id': '59c0cf026e360bb005fad092', 'userLogo': 'http://mmbiz.qpic.cn/mmbiz/gBJLhicQA6iaRa6Uo3Zp7OKCERKWJQkZ8I8BPGicibkaicXH7AE1N0oTlkbiarSKvNOwPC2KJVpAt3lMia6fY5PEwZQLQ/0', 'userName': '女生学院', 'read_num': 0, 'like_num': 0, 'typeId': '2', 'userLogo_code': 'http://open.weixin.qq.com/qr/code/?username=nvshengu' },
@@ -60,21 +39,54 @@ data = [
 	// { 'date': '2017-09-18 19:00:00', 'ct': '2017-09-19 08:02:02.961', 'weixinNum': 'indienova', 'url': 'http://mp.weixin.qq.com/s?src=11&timestamp=1505779203&ver=401&signature=-L3hf4TQjU8YSPq6pcUKubMUjaacQT2GYxPZf998arBbq3peqGV*jDqykKc5XL3Idp9WzOY9ZSIc0xwzF-Fw0*F3XfY123ZNPME-4x2TjI6HflC3pM8o9e5Uz3iwlk*h&new=1', 'id': '25e93d1efa897b2a1f3e0d095a6b2d1f', 'typeName': '段子手', 'title': '【独游推荐】站上Comedy Night的舞台，来一场段子表演吧', 'contentImg': 'http://mmbiz.qpic.cn/mmbiz_jpg/VZ8kwNia656nicOMfnAZF7ax46ghGdb6lTZlQC6icUhL2k25bL7vz2luByZibyun2Jpvz1yiac7RhkXGM3CLtSUcpdQ/0?wx_fmt=jpeg', '_id': '59c05e7a6e360bb005fa9415', 'userLogo': 'http://mmbiz.qpic.cn/mmbiz_png/VZ8kwNia656kqqvslTdIibjiaGb737IUzer4qT4lsgpwFlibdm8v5KISjbMPBpxzicfUNfSAeianASjmC6ewCCUDf2gg/0?wx_fmt=png', 'userName': 'indienova', 'read_num': 0, 'like_num': 0, 'typeId': '2', 'userLogo_code': 'http://open.weixin.qq.com/qr/code/?username=indienova' },
 	// { 'date': '2017-09-18 20:00:00', 'ct': '2017-09-19 08:02:02.927', 'weixinNum': 'douhaodouqu', 'url': 'http://mp.weixin.qq.com/s?src=11&timestamp=1505779203&ver=401&signature=28deuTFazWC85AGug3LAoDrnGMdBz5FUicvdi36OFdJzKBcCljP3JFRrvZRUCoDsiXb2nAACP89ScK8FzF2sRpq3Fp3CJsJocUy14GN15f9r9b4bQUCMIN05OCk4FRcT&new=1', 'id': '31b946250f92b4a2fa5b1a2386ec02e5', 'typeName': '段子手', 'title': '段子帖 | 来欣赏某岛国的逗逼整人节目，体验分分钟切腹自尽的节奏。。', 'contentImg': 'http://mmbiz.qpic.cn/mmbiz_jpg/SsWL4E6eibtz0KZiaL7NJ51NSI8OFbDh3KpSBYP30u8iaXJkGOBkyiblJtkia2HODDqC6rkzKF1Ky6YS6WkAzu0ygNw/0?wx_fmt=jpeg', '_id': '59c05e7a6e360bb005fa9414', 'userLogo': 'http://mmbiz.qpic.cn/mmbiz_png/ib6hQVkyS06tXBIeDibonv9icnAYJdDiaf18vZASOCSIibE7BBCN8nHO3E5LapkGMGc3tJz2E73PibzdvKBXClZEMjGg/0?wx_fmt=png', 'userName': '逗号逗趣', 'read_num': 0, 'like_num': 0, 'typeId': '2', 'userLogo_code': 'http://open.weixin.qq.com/qr/code/?username=douhaodouqu' },
 	// { 'date': '2017-09-18 21:00:03', 'ct': '2017-09-19 08:02:02.889', 'weixinNum': 'js19982', 'url': 'http://mp.weixin.qq.com/s?src=11&timestamp=1505779203&ver=401&signature=h-H9WMYWqh1lHbEjqR-izI5Y-HD9cqpDOIE2JdZZX4JL0E-7oqBKsSHmuW2ri44e6m70SEcQ7qut8wGqTtMtVOBJW0tvEO7DMXjHibC7sPYL29ZoMRbdcXzRfXrBeIPQ&new=1', 'id': '9beb5ad06016b4b724e90e0d460811f3', 'typeName': '段子手', 'title': '健身房失误集锦，心疼又爆笑', 'contentImg': 'http://mmbiz.qpic.cn/mmbiz_jpg/9y9hHheg8eTQV4bDmT3hbskKKrAId9Dg0dX4Nvye1jCMpMoiahGAx3yLeerzhmo9Mkb8yJlQJMr35TpsS6XaMGw/0?wx_fmt=jpeg', '_id': '59c05e7a6e360bb005fa9413', 'userLogo': 'http://mmbiz.qpic.cn/mmbiz/9y9hHheg8eQzOc6WwtkyVQLAria2VFsdibKbjYfSaiabhAMg7Bh9Yls2gOkPicFrOSjm8DWicNiakI23TF7ja418O0ibg/0?wx_fmt=png', 'userName': '健身女王的日常', 'read_num': 0, 'like_num': 0, 'typeId': '2', 'userLogo_code': 'http://open.weixin.qq.com/qr/code/?username=js19982' },
-	{ 'date': '2017-09-19 06:52:28', 'ct': '2017-09-19 08:02:02.861', 'weixinNum': 'gwrs06', 'url': 'http://mp.weixin.qq.com/s?src=11&timestamp=1505779203&ver=401&signature=OHyay9RUd-aYe5n8aktgB0HPZsqWLtJbdrKWQY46mhHR1tD*pNpjOJzbaPueSweu3sX8-i4Nsk1ZfzD*Ujl2*JHpI36WOfOVjx*PvM5kOTDHt5kh-JhMuuIrnBIDNot9&new=1', 'id': 'c3497696f93413c4883480805315328e', 'typeName': '段子手', 'title': '幽默笑话：老公，我把人家车刮了！', 'contentImg': 'http://mmbiz.qpic.cn/mmbiz_jpg/sg3qdUu6gM7NxfUDZ3uF7uoukVYicyvImItdibnCZeFIJYteibueSb1PH4iaB1UMT10AP9bPSiat1C963AlRBDe1PJA/0?wx_fmt=jpeg', '_id': '59c05e7a6e360bb005fa9412', 'userLogo': 'http://mmbiz.qpic.cn/mmbiz/sg3qdUu6gM4MB3O6twRtUA81DgAsIUVs3yrur6JkHk2ZJdPSEpkGRgpPTQu1xQOB0LE5repBvEIic4BQLKcSdzQ/0', 'userName': '感悟人生', 'read_num': 0, 'like_num': 0, 'typeId': '2', 'userLogo_code': 'http://open.weixin.qq.com/qr/code/?username=gwrs06' },
-	{ 'date': '2017-09-18 20:30:00', 'ct': '2017-09-19 08:02:02.858', 'weixinNum': 'ruijing100', 'url': 'http://mp.weixin.qq.com/s?src=11&timestamp=1505779203&ver=401&signature=RO4*GGglnpvX6oTcU5D9kL39DmQ09MBrQ3aWwa3Op2zsfoTyWJJAtl3zJ*qAPm9kQC87oNl0fIuk4oMKKoDT7RJGpRDyTJ8OUJ46ACn67BWX0U2YCOMaOycnQd8m*-W*&new=1', 'id': 'd6845302acd345cc720fc6eddc91b358', 'typeName': '段子手', 'title': '女人眼中男人最帅气的五个瞬间！好搞笑，看不下去了哈哈哈', 'contentImg': 'http://mmbiz.qpic.cn/mmbiz_jpg/B1KgYwrOPgfZoicSwaIw0D3gmibUNJauuCiaW84znc29SJjaOb8VA97brwLN9fOkGMC6GbL3QFXicUnVfqBZLJUEKQ/0?wx_fmt=jpeg', '_id': '59c05e7a6e360bb005fa9411', 'userLogo': 'http://mmsns.qpic.cn/mmsns/4fBDBzTKdYLKUcHCCb6XSTGIO0Zg0ic2edMJM0fY3hrs/0', 'userName': '全球笑话club', 'read_num': 0, 'like_num': 0, 'typeId': '2', 'userLogo_code': 'http://open.weixin.qq.com/qr/code/?username=ruijing100' }
+	{
+		date: '2017-09-19 06:52:28',
+		ct: '2017-09-19 08:02:02.861',
+		weixinNum: 'gwrs06',
+		url:
+		'http://mp.weixin.qq.com/s?src=11&timestamp=1505779203&ver=401&signature=OHyay9RUd-aYe5n8aktgB0HPZsqWLtJbdrKWQY46mhHR1tD*pNpjOJzbaPueSweu3sX8-i4Nsk1ZfzD*Ujl2*JHpI36WOfOVjx*PvM5kOTDHt5kh-JhMuuIrnBIDNot9&new=1',
+		id: 'c3497696f93413c4883480805315328e',
+		typeName: '段子手',
+		title: '幽默笑话：老公，我把人家车刮了！',
+		contentImg:
+		'http://mmbiz.qpic.cn/mmbiz_jpg/sg3qdUu6gM7NxfUDZ3uF7uoukVYicyvImItdibnCZeFIJYteibueSb1PH4iaB1UMT10AP9bPSiat1C963AlRBDe1PJA/0?wx_fmt=jpeg',
+		_id: '59c05e7a6e360bb005fa9412',
+		userLogo:
+		'http://mmbiz.qpic.cn/mmbiz/sg3qdUu6gM4MB3O6twRtUA81DgAsIUVs3yrur6JkHk2ZJdPSEpkGRgpPTQu1xQOB0LE5repBvEIic4BQLKcSdzQ/0',
+		userName: '感悟人生',
+		read_num: 0,
+		like_num: 0,
+		typeId: '2',
+		userLogo_code: 'http://open.weixin.qq.com/qr/code/?username=gwrs06'
+	},
+	{
+		date: '2017-09-18 20:30:00',
+		ct: '2017-09-19 08:02:02.858',
+		weixinNum: 'ruijing100',
+		url:
+		'http://mp.weixin.qq.com/s?src=11&timestamp=1505779203&ver=401&signature=RO4*GGglnpvX6oTcU5D9kL39DmQ09MBrQ3aWwa3Op2zsfoTyWJJAtl3zJ*qAPm9kQC87oNl0fIuk4oMKKoDT7RJGpRDyTJ8OUJ46ACn67BWX0U2YCOMaOycnQd8m*-W*&new=1',
+		id: 'd6845302acd345cc720fc6eddc91b358',
+		typeName: '段子手',
+		title: '女人眼中男人最帅气的五个瞬间！好搞笑，看不下去了哈哈哈',
+		contentImg:
+		'http://mmbiz.qpic.cn/mmbiz_jpg/B1KgYwrOPgfZoicSwaIw0D3gmibUNJauuCiaW84znc29SJjaOb8VA97brwLN9fOkGMC6GbL3QFXicUnVfqBZLJUEKQ/0?wx_fmt=jpeg',
+		_id: '59c05e7a6e360bb005fa9411',
+		userLogo:
+		'http://mmsns.qpic.cn/mmsns/4fBDBzTKdYLKUcHCCb6XSTGIO0Zg0ic2edMJM0fY3hrs/0',
+		userName: '全球笑话club',
+		read_num: 0,
+		like_num: 0,
+		typeId: '2',
+		userLogo_code: 'http://open.weixin.qq.com/qr/code/?username=ruijing100'
+	}
 ];
-
 
 let index = data.length - 1;
 const NUM_SECTIONS = 4;
 const NUM_ROWS_PER_SECTION = 5;
 let pageIndex = 0;
 
-
-let pageNum = 1;
-
-
-
+// let pageNum = 1;
 
 /**
  * 
@@ -90,16 +102,12 @@ class NewsList extends React.Component {
 			for (let i = 0; i < NUM_SECTIONS; i++) {
 				let ii = pIndex * NUM_SECTIONS + i;
 				const sectionName = `Section ${ii}`;
-				this
-					.sectionIDs
-					.push(sectionName);
+				this.sectionIDs.push(sectionName);
 				this.dataBlob[sectionName] = sectionName;
 				this.rowIDs[ii] = [];
 				for (let jj = 0; jj < NUM_ROWS_PER_SECTION; jj++) {
 					const rowName = `S${ii}, R${jj}`;
-					this
-						.rowIDs[ii]
-						.push(rowName);
+					this.rowIDs[ii].push(rowName);
 					this.dataBlob[rowName] = rowName;
 				}
 			}
@@ -107,30 +115,36 @@ class NewsList extends React.Component {
 			this.sectionIDs = [].concat(this.sectionIDs);
 			this.rowIDs = [].concat(this.rowIDs);
 		};
-		this.onEndReached = (_event) => {
+		this.onEndReached = _event => {
 			// load new data
 			this.setState({ isLoading: true });
 
+			const { newsActions } = this.props;
+			newsActions.requestNewsList(false, true, ++pageIndex);
+
 			setTimeout(() => {
-				this._genData(++pageIndex);
+				this._genData(pageIndex);
 				this.setState({
-					dataSource: this
-						.state
-						.dataSource
-						.cloneWithRowsAndSections(this.dataBlob, this.sectionIDs, this.rowIDs),
+					dataSource: this.state.dataSource.cloneWithRowsAndSections(
+						this.dataBlob,
+						this.sectionIDs,
+						this.rowIDs
+					),
 					isLoading: false
 				});
 			}, 1000);
 		};
-		this.renderSectionHeader = (sectionData) => {
+		this.renderSectionHeader = sectionData => {
 			return (
 				<Text
-					style={[{
-						padding: 10,
-						backgroundColor: 'rgba(255,255,255,0.8)'
-					}
-					]}>
-					{`Task ${sectionData.split(' ')[1]}`}
+					style={[
+						{
+							padding: 10,
+							backgroundColor: '#18f'
+						}
+					]}
+				>
+					{`section_id ${sectionData.split(' ')[1]}`}
 				</Text>
 			);
 		};
@@ -147,51 +161,56 @@ class NewsList extends React.Component {
 		this.rowIDs = [];
 		this._genData();
 		this.state = {
-			dataSource: dataSource.cloneWithRowsAndSections(this.dataBlob, this.sectionIDs, this.rowIDs),
+			dataSource: dataSource.cloneWithRowsAndSections(
+				this.dataBlob,
+				this.sectionIDs,
+				this.rowIDs
+			),
 			headerPressCount: 0
 		};
 	}
-
 
 	componentDidMount() {
 		const { newsActions } = this.props;
 		console.info('newsList,newsAction:', newsActions);
 
-		newsActions.requestNewsList(false, true, pageNum);
+		newsActions.requestNewsList(false, true, pageIndex);
 	}
 
 	onRefresh = () => {
-		pageNum = Math.floor(5 * Math.random());
-
-		const { newsActions } = this.props;
-		newsActions.requestNewsList(false, true, pageNum);
+		// pageNum = Math.floor(5 * Math.random());
+		// const { newsActions } = this.props;
+		// newsActions.requestNewsList(false, true, pageNum);
 	};
 
-
-
 	render() {
-
 		const { news } = this.props;
 		console.info(news);
 
 		if (Object.keys(news.newsList).length > 0) {
-			data = news.newsList[pageNum];
+			data = news.newsList[pageIndex];
 		}
 
-
-
-		const separator = (sectionID, rowID) => (<View
-			key={`${sectionID}-${rowID}`}
-			style={{
-				backgroundColor: '#F5F5F9',
-				height: 5,
-				borderStyle: 'solid',
-				borderTopWidth: 1,
-				borderTopColor: '#ECECED',
-				borderBottomWidth: 1,
-				borderBottomColor: '#ECECED'
-			}} />);
-		const row = (_rowData, sectionID, rowID, highlightRow = (_sId, _rId) => { }) => {
+		const separator = (sectionID, rowID) => (
+			<View
+				key={`${sectionID}-${rowID}`}
+				style={{
+					backgroundColor: '#F5F5F9',
+					height: 5,
+					borderStyle: 'solid',
+					borderTopWidth: 1,
+					borderTopColor: '#ECECED',
+					borderBottomWidth: 1,
+					borderBottomColor: '#ECECED'
+				}}
+			/>
+		);
+		const row = (
+			_rowData,
+			sectionID,
+			rowID,
+			highlightRow = (_sId, _rId) => { }
+		) => {
 			if (index < 0) {
 				index = data.length - 1;
 			}
@@ -200,70 +219,85 @@ class NewsList extends React.Component {
 				<View key={rowID}>
 					<TouchableHighlight
 						underlayColor={'rgba(100,100,100,0.2)'}
-						style={[{
-							padding: 8,
-							backgroundColor: 'white'
-						}
+						style={[
+							{
+								padding: 8,
+								backgroundColor: 'white'
+							}
 						]}
 						onPress={() => {
 							highlightRow(sectionID, rowID);
-						}}>
+						}}
+					>
 						<View>
 							<View
-								style={[{
-									marginBottom: 8,
-									borderStyle: 'solid',
-									borderBottomWidth: 1,
-									borderBottomColor: '#F6F6F6'
-								}
-								]}>
+								style={[
+									{
+										marginBottom: 8,
+										borderStyle: 'solid',
+										borderBottomWidth: 1,
+										borderBottomColor: '#F6F6F6'
+									}
+								]}
+							>
 								<Text
 									style={{
 										fontSize: 18,
-										fontWeight: '500',
+										fontWeight: '300',
 										padding: 2
-									}}>{obj.title}</Text>
+									}}
+								>
+									{obj.title}
+								</Text>
 							</View>
 							<View
-								style={[{
-									flexDirection: 'row'
-								}
-								]}>
-								<Image
-									style={[{
-										height: 64,
-										width: 64,
-										marginRight: 8
+								style={[
+									{
+										flexDirection: 'row'
 									}
+								]}
+							>
+								<Image
+									style={[
+										{
+											height: 64,
+											width: 64,
+											borderRadius: 5,
+											marginRight: 8
+										}
 									]}
 									source={{
 										uri: obj.contentImg
-									}} />
+									}}
+								/>
 								<View>
-									<Text>{obj.userName}
-										- {rowID}</Text>
+									<Text>
+										{obj.userName}
+										- {rowID}
+									</Text>
 									<Text>{this.props.highlightRow}</Text>
 									<Text>
 										<Text
-											style={[{
-												fontSize: 24,
-												color: '#FF6E27'
-											}
-											]}>35</Text>¥</Text>
+											style={[
+												{
+													fontSize: 24,
+													color: '#FF6E27'
+												}
+											]}
+										>
+											35
+										</Text>¥
+									</Text>
 								</View>
 							</View>
 						</View>
 					</TouchableHighlight>
-				</View >
+				</View>
 			);
 		};
-		const loadingTxt = this.state.isLoading
-			? 'Loading...'
-			: 'Loaded';
+		const loadingTxt = this.state.isLoading ? 'Loading...' : 'Loaded';
 		return (
-
 			<View>
-
 				<Flex>
 					<Button
 						className="btn"
@@ -274,29 +308,39 @@ class NewsList extends React.Component {
 						style={{ margin: 20 }}
 						onClick={() => this.onRefresh()}
 					>
-						refresh
+						Btn
 					</Button>
 				</Flex>
 
 				<ListView
 					dataSource={this.state.dataSource}
-					renderHeader={() => <Text style={[{
-						padding: 8
-					}
-					]}>header</Text>}
-					renderFooter={() => <Text style={[{
-						padding: 30,
-						textAlign: 'center'
-					}
-					]}>
-						{loadingTxt}
-					</Text>}
+					renderHeader={() => (
+						<Text
+							style={[
+								{ padding: 8 }
+							]}
+						>
+							页头
+						</Text>
+					)}
+					renderFooter={() => (
+						<Text style={[{
+							padding: 30,
+							textAlign: 'center'
+						}]}
+						>
+							{loadingTxt}
+						</Text>
+					)}
+					honrizontal={true}
 					renderSectionHeader={this.renderSectionHeader}
 					renderRow={row}
 					renderSeparator={separator}
 					pageSize={10}
-				/*onEndReached={this.onEndReached}
-				onEndReachedThreshold={10}*/
+					onEndReached={this.onEndReached}
+					onEndReachedThreshold={150}
+
+				/* 调用onEndReached之前的临界值，单位是像素  设置提前加载 下一页 */
 				/>
 			</View>
 		);
@@ -304,8 +348,6 @@ class NewsList extends React.Component {
 }
 export const title = 'ListView';
 export const description = 'ListView example';
-
-
 
 export default NewsList;
 

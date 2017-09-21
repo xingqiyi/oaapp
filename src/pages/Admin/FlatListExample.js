@@ -105,3 +105,4 @@ class FlatListExample extends React.Component {
 export default FlatListExample;
 
 FlatListExample.propTypes = propTypes;
+

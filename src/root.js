@@ -9,6 +9,9 @@ const store = configureStore();
 // // run root saga
 store.runSaga(rootSaga);
 
+//clear the remote debugger warning
+console.ignoredYellowBox = ['Remote debugger'];
+
 const Root = () =>
 	(<Provider store={store}>
 		<App />
