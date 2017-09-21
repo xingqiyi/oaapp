@@ -2,14 +2,14 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 10:53:51 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-21 16:43:31
+ * @Last Modified time: 2017-09-21 17:57:01
  */
 /* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { ListView } from 'antd-mobile';
 
-import { Grid, Button, Flex } from 'antd-mobile';
+import { Grid, Button, Flex, RefreshControl } from 'antd-mobile';
 
 import PropTypes from 'prop-types';
 
@@ -96,8 +96,12 @@ let pageIndex = 0;
  * @extends {React.Component}
  */
 class NewsList extends React.Component {
+
 	constructor(props) {
 		super(props);
+
+
+
 		this._genData = (pIndex = 0) => {
 			for (let i = 0; i < NUM_SECTIONS; i++) {
 				let ii = pIndex * NUM_SECTIONS + i;
@@ -178,9 +182,23 @@ class NewsList extends React.Component {
 	}
 
 	onRefresh = () => {
-		// pageNum = Math.floor(5 * Math.random());
-		// const { newsActions } = this.props;
-		// newsActions.requestNewsList(false, true, pageNum);
+		// pageIndex = Math.floor(5 * Math.random());
+
+		this.setState({ isRefreshing: true });
+
+		pageIndex = 0;
+		const { newsActions } = this.props;
+		newsActions.requestNewsList(false, true, pageIndex);
+
+
+		setTimeout(() => {
+			// this._genData(pageIndex);
+			this.setState({
+				isRefreshing: false
+			});
+		}, 1000);
+
+
 	};
 
 	render() {
@@ -209,8 +227,7 @@ class NewsList extends React.Component {
 			_rowData,
 			sectionID,
 			rowID,
-			highlightRow = (_sId, _rId) => { }
-		) => {
+			highlightRow = (_sId, _rId) => { }) => {
 			if (index < 0) {
 				index = data.length - 1;
 			}
@@ -296,6 +313,18 @@ class NewsList extends React.Component {
 			);
 		};
 		const loadingTxt = this.state.isLoading ? 'Loading...' : 'Loaded';
+
+		const refreshControlEle = (<RefreshControl
+			refreshing={this.state.isRefreshing || false}
+			onRefresh={this.onRefresh}
+			tintColor="#ff0000"
+			title="Loading..."
+			titleColor="#00ff00"
+			colors={['#ff0000', '#00ff00', '#0000ff']}
+			progressBackgroundColor="#ffff00"
+		/>);
+
+
 		return (
 			<View>
 				<Flex>
@@ -332,7 +361,8 @@ class NewsList extends React.Component {
 							{loadingTxt}
 						</Text>
 					)}
-					honrizontal={true}
+					/*honrizontal={true}*/
+					refreshControl={refreshControlEle}
 					renderSectionHeader={this.renderSectionHeader}
 					renderRow={row}
 					renderSeparator={separator}

@@ -7,6 +7,7 @@
     "test": "jest",
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "postinstall": "rndebugger-open",
     "format111": "find src -name '*.js' | xargs prettier --write --single-quote",
     "format": "eslint src ./*.js --fix",
     "lint": "eslint src ./*.js "
