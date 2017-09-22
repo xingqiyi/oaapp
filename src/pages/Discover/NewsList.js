@@ -2,9 +2,8 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 10:53:51 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-21 17:57:01
+ * @Last Modified time: 2017-09-22 16:58:26
  */
-/* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { ListView } from 'antd-mobile';
@@ -86,7 +85,9 @@ const NUM_SECTIONS = 4;
 const NUM_ROWS_PER_SECTION = 5;
 let pageIndex = 0;
 
-// let pageNum = 1;
+let typeNo = 1;
+
+
 
 /**
  * 
@@ -119,15 +120,28 @@ class NewsList extends React.Component {
 			this.sectionIDs = [].concat(this.sectionIDs);
 			this.rowIDs = [].concat(this.rowIDs);
 		};
-		this.onEndReached = _event => {
+		this.onEndReached = event => {
+
+			console.log('onEndReached.........................................');
+
+
+			// load new data
+			// hasMore: from backend data, indicates whether it is the last page, here is false
+			if (this.state.isLoading && !this.state.hasMore) {
+				return;
+			}
+
+			console.log('reach end', event);
 			// load new data
 			this.setState({ isLoading: true });
 
-			const { newsActions } = this.props;
-			newsActions.requestNewsList(false, true, ++pageIndex);
+			// const { newsActions } = this.props;
+			// newsActions.requestNewsList(false, false, typeNo, true, ++pageIndex);
+
 
 			setTimeout(() => {
-				this._genData(pageIndex);
+				// if (pageIndex != 1) { pageIndex++; }
+				this._genData(++pageIndex);
 				this.setState({
 					dataSource: this.state.dataSource.cloneWithRowsAndSections(
 						this.dataBlob,
@@ -137,7 +151,10 @@ class NewsList extends React.Component {
 					isLoading: false
 				});
 			}, 1000);
+
 		};
+
+
 		this.renderSectionHeader = sectionData => {
 			return (
 				<Text
@@ -178,21 +195,31 @@ class NewsList extends React.Component {
 		const { newsActions } = this.props;
 		console.info('newsList,newsAction:', newsActions);
 
-		newsActions.requestNewsList(false, true, pageIndex);
+		newsActions.requestNewsList(false, true, typeNo);
 	}
 
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.dataSource !== this.props.dataSource) {
+			this.setState({
+				dataSource: this.state.dataSource.cloneWithRowsAndSections(nextProps.dataSource),
+			});
+		}
+	}
+
+
 	onRefresh = () => {
-		// pageIndex = Math.floor(5 * Math.random());
+		// typeNo = Math.floor(5 * Math.random());
 
 		this.setState({ isRefreshing: true });
 
-		pageIndex = 0;
+		typeNo = 0;
 		const { newsActions } = this.props;
-		newsActions.requestNewsList(false, true, pageIndex);
+		newsActions.requestNewsList(true, false, typeNo);
 
 
 		setTimeout(() => {
-			// this._genData(pageIndex);
+			// this._genData(typeNo);
 			this.setState({
 				isRefreshing: false
 			});
@@ -203,10 +230,10 @@ class NewsList extends React.Component {
 
 	render() {
 		const { news } = this.props;
-		console.info(news);
+		console.info('newsList render:', news);
 
 		if (Object.keys(news.newsList).length > 0) {
-			data = news.newsList[pageIndex];
+			data = news.newsList[typeNo];
 		}
 
 		const separator = (sectionID, rowID) => (

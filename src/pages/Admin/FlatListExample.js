@@ -14,6 +14,18 @@ const propTypes = {
 
 let listData;
 
+listData = [
+	{ key: 'a', value: 'aaaaaaaa' },
+	{ key: 'b', value: 'bbbbbbbb' },
+	{ key: 'c', value: 'cccccccc' },
+	{ key: 'd', value: 'dddddddd' },
+	{ key: 'e', value: 'eeeeeeee' },
+	{ key: 'f', value: 'ffffffff' },
+	{ key: 'g', value: 'gggggggg' },
+	{ key: 'h', value: 'hhhhhhhh' },
+	{ key: 'i', value: 'iiiiiiii' },
+	{ key: 'j', value: 'jjjjjjjj' }
+];
 class FlatListExample extends React.Component {
 
 	constructor(props) {
@@ -34,18 +46,6 @@ class FlatListExample extends React.Component {
 		// newsActions.requestNewsList(false, true, 2);
 
 
-		listData = [
-			{ key: 'a', value: 'aaaaaaaa' },
-			{ key: 'b', value: 'bbbbbbbb' },
-			{ key: 'c', value: 'cccccccc' },
-			{ key: 'd', value: 'dddddddd' },
-			{ key: 'e', value: 'eeeeeeee' },
-			{ key: 'f', value: 'ffffffff' },
-			{ key: 'g', value: 'gggggggg' },
-			{ key: 'h', value: 'hhhhhhhh' },
-			{ key: 'i', value: 'iiiiiiii' },
-			{ key: 'j', value: 'jjjjjjjj' }
-		];
 
 
 	}
