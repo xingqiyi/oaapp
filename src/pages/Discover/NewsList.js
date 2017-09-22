@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 10:53:51 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-22 16:58:26
+ * @Last Modified time: 2017-09-22 17:53:49
  */
 import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
@@ -135,13 +135,14 @@ class NewsList extends React.Component {
 			// load new data
 			this.setState({ isLoading: true });
 
-			// const { newsActions } = this.props;
-			// newsActions.requestNewsList(false, false, typeNo, true, ++pageIndex);
+			pageIndex++;
 
+			const { newsActions } = this.props;
+			newsActions.requestNewsList(false, false, typeNo, true, pageIndex);
 
 			setTimeout(() => {
-				// if (pageIndex != 1) { pageIndex++; }
-				this._genData(++pageIndex);
+
+				this._genData(pageIndex);
 				this.setState({
 					dataSource: this.state.dataSource.cloneWithRowsAndSections(
 						this.dataBlob,
@@ -354,7 +355,7 @@ class NewsList extends React.Component {
 
 		return (
 			<View>
-				<Flex>
+				{/* <Flex>
 					<Button
 						className="btn"
 						type="primary"
@@ -366,17 +367,17 @@ class NewsList extends React.Component {
 					>
 						Btn
 					</Button>
-				</Flex>
+				</Flex> */}
 
 				<ListView
 					dataSource={this.state.dataSource}
 					renderHeader={() => (
 						<Text
 							style={[
-								{ padding: 8 }
+								{ padding: 8, textAlign: 'center' }
 							]}
 						>
-							页头
+							页头Tabs
 						</Text>
 					)}
 					renderFooter={() => (
