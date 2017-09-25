@@ -1,116 +1,168 @@
+/**
+ * Created by JokAr on 2017/4/12.
+ */
+'use strict';
+import React, { Component } from 'react';
+import { ActivityIndicator, Animated, FlatList, ScrollView, StyleSheet, Text, View, Image } from 'react-native';
 
-import React from 'react';
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
+const REQUEST_URL = 'https://api.github.com/search/repositories?q=javascript&sort=stars';
 
-import { View, Button, FlatList, Text, Dimensions, StyleSheet } from 'react-native';
+class NewsList extends Component {
+	static navigationOptions = {
+		title: 'NewsList',
+	}
 
-const { width, height } = Dimensions.get('window');
-
-
-export default class NewsList extends React.Component {
-	// 构造
 	constructor(props) {
 		super(props);
+		this.state = {
+			isLoading: true,
+			//网络请求状态
+			error: false,
+			errorInfo: '',
+			dataArray: [],
+		};
 	}
-	refreshing() {
-		let timer = setTimeout(() => {
-			clearTimeout(timer);
-			alert('刷新成功');
-		}, 1500);
-	}
-	_onload() {
-		let timer = setTimeout(() => {
-			clearTimeout(timer);
-			alert('加载成功');
-		}, 1500);
-	}
-	render() {
-		var data = [];
-		for (var i = 0; i < 100; i++) {
-			data.push({ key: i, title: i + '' });
-		}
 
+	//网络请求
+	fetchData() {
+		//这个是js的访问网络的方法
+		fetch(REQUEST_URL)
+			.then((response) => response.json())
+			.then((responseData) => {
+				let data = responseData.items;
+				let dataBlob = [];
+				let i = 0;
+				data.map(function (item) {
+					dataBlob.push({
+						key: i,
+						value: item,
+					});
+					i++;
+				});
+				this.setState({
+					//复制数据源
+					dataArray: dataBlob,
+					isLoading: false,
+				});
+				data = null;
+				dataBlob = null;
+			})
+			.catch((error) => {
+				this.setState({
+					error: true,
+					errorInfo: error
+				});
+			})
+			.done();
+	}
+
+	componentDidMount() {
+		//请求数据
+		this.fetchData();
+	}
+
+	//加载等待的view
+	renderLoadingView() {
 		return (
-			<View style={{ flex: 1 }}>
-				<Button title='滚动到指定位置' onPress={() => {
-					this._flatList.scrollToOffset({ animated: true, offset: 2000 });
-				}} />
-				<View style={{ flex: 1 }}>
-					<FlatList
-						ref={(flatList) => this._flatList = flatList}
-						ListHeaderComponent={this._header}
-						ListFooterComponent={this._footer}
-						ItemSeparatorComponent={this._separator}
-						renderItem={this._renderItem}
-						onRefresh={this.refreshing}
-						refreshing={false}
-						onEndReachedThreshold={0}
-						onEndReached={
-							this._onload
-						}
-						numColumns={3}
-						columnWrapperStyle={{ borderWidth: 2, borderColor: 'black', paddingLeft: 20 }}
-
-						//horizontal={true}
-
-						getItemLayout={(data, index) => (
-							{ length: 100, offset: (100 + 2) * index, index }
-						)}
-
-						data={data}>
-					</FlatList>
-				</View>
-
+			<View style={styles.container}>
+				<ActivityIndicator
+					animating={true}
+					style={[styles.gray, { height: 80 }]}
+					color='red'
+					size="large"
+				/>
 			</View>
 		);
 	}
 
-
-	_renderItem = (item) => {
-		var txt = '第' + item.index + '个' + ' title=' + item.item.title;
-		var bgColor = item.index % 2 == 0 ? 'red' : 'blue';
-		return <Text style={[{ flex: 1, height: 100, backgroundColor: bgColor }, styles.txt]}>{txt}</Text>;
+	//加载失败view
+	renderErrorView(error) {
+		return (
+			<View style={styles.container}>
+				<Text>
+					Fail: {error}
+				</Text>
+			</View>
+		);
 	}
 
-	_header = () => {
-		return <Text style={[styles.txt, { backgroundColor: 'black' }]}>这是头部</Text>;
+	//返回itemView
+	renderItemView({ item }) {
+		return (
+			<View style={styles.box}>
+
+				<Image
+					style={[
+						{
+							height: 64,
+							width: 64,
+							borderRadius: 5,
+							marginRight: 8
+						}
+					]}
+					source={{
+						uri: item.value.owner.avatar_url
+					}}
+				/>
+				<Text style={styles.title}>name: {item.value.name} ({item.value.stargazers_count}
+					stars)</Text>
+				<Text style={styles.content}>description: {item.value.description}</Text>
+			</View>
+		);
 	}
 
-	_footer = () => {
-		return <Text style={[styles.txt, { backgroundColor: 'black' }]}>这是尾部</Text>;
+	renderData() {
+		return (
+			<ScrollView >
+				<Text >
+					Data:
+				</Text>
+				<AnimatedFlatList
+					data={this.state.dataArray}
+					renderItem={this.renderItemView}
+				/>
+			</ScrollView>
+		);
 	}
 
-	_separator = () => {
-		return <View style={{ height: 2, backgroundColor: 'yellow' }} />;
+	render() {
+		//第一次加载等待的view
+		if (this.state.isLoading && !this.state.error) {
+			return this.renderLoadingView();
+		} else if (this.state.error) {
+			//请求失败view
+			return this.renderErrorView(this.state.errorInfo);
+		}
+		//加载数据
+		return this.renderData();
 	}
-
-
 }
+
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#F5FCFF',
+	},
+	title: {
 
+		fontSize: 15,
+		color: 'blue',
 	},
 	content: {
-		width: width,
-		height: height,
-		backgroundColor: 'yellow',
-		justifyContent: 'center',
-		alignItems: 'center'
+		fontSize: 15,
+		color: 'black',
 	},
-	cell: {
-		height: 100,
-		backgroundColor: 'purple',
-		alignItems: 'center',
-		justifyContent: 'center',
-		borderBottomColor: '#ececec',
-		borderBottomWidth: 1
 
-	},
-	txt: {
-		textAlign: 'center',
-		textAlignVertical: 'center',
-		color: 'white',
-		fontSize: 30,
+	box: {
+		flex: 1,
+		borderBottomColor: 'red',
+		borderBottomWidth: 1,
 	}
 
-});
 
+});
+module.exports = NewsList;
