@@ -86,14 +86,11 @@ class NewsList extends PureComponent {
 			const selected = new Map(state.selected);
 			selected.set(id, !selected.get(id));
 
-
-
-
 			return { selected };
 		});
 
 		const { navigate } = this.props.navigation;
-		navigate('NewsDetail2', { user: 'jim' });
+		navigate('NewsDetail', { user: 'jim' });
 
 	};
 
@@ -189,7 +186,12 @@ class NewsList extends PureComponent {
 		return (
 			<FlatList
 
-				windowSize={40}
+				//windowSize={40}
+				//windowSize： 限定绘制的最大数目，默认为21。/
+				//maxToRenderPerBatch：一次绘制的最大数目。
+				//updateCellsBatchingPeriod：更新绘制的间隔时间。
+				//removeClippedSubviews：移除看不见的subview，目前还有bug，可酌情使用。
+				//initialNumToRender：首次绘制的数目。
 
 				data={this.state.sourceData}
 				extraData={this.state.selected}
@@ -200,8 +202,6 @@ class NewsList extends PureComponent {
 				// 当列表被滚动到距离内容最底部不足onEndReacchedThreshold设置的距离时调用
 				onEndReached={this._onEndReached.bind(this)}
 
-
-
 				ListHeaderComponent={this._renderHeader}
 				ListFooterComponent={this._renderFooter}
 				ItemSeparatorComponent={this._renderItemSeparatorComponent}
@@ -210,13 +210,13 @@ class NewsList extends PureComponent {
 				onRefresh={this._renderRefresh}
 				// 是一个可选的优化，用于避免动态测量内容，+1是加上分割线的高度  
 				//此处数字 应与真实高度相等   否则起反作用  会白屏
-				getItemLayout={(data, index) => ({ length: 70, offset: (70 + 1) * index, index })}
+				getItemLayout={(data, index) => ({ length: 80, offset: (80 + 1) * index, index })}
 			/>
 		);
 	}
 }
 
-class FlatListItem extends React.PureComponent {
+class FlatListItem extends PureComponent {
 	_onPress = () => {
 
 
@@ -228,16 +228,16 @@ class FlatListItem extends React.PureComponent {
 			<TouchableOpacity
 				{...this.props}
 				onPress={this._onPress}
-				style={{ height: 70, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'row' }}
+				style={{ height: 80, justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row' }}
 			>
 				<Image
 					style={[{ height: 60, width: 60, borderRadius: 5, margin: 5 }]}
 					source={{ uri: this.props.img }}
 				/>
-				<View style={{ justifyContent: 'center' }}>
+				<View style={{ justifyContent: 'center', padding: 5 }}>
 					<Text style={styles.title}>name: {this.props.title} ({this.props.stargazers_count}
 						stars)</Text>
-					<Text style={styles.content}>description: {this.props.description}</Text>
+					<Text style={styles.content}> {this.props.description}</Text>
 				</View>
 
 			</TouchableOpacity>
