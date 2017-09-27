@@ -1,26 +1,22 @@
 /*
  * @Author: shuaixc 
  * @Date: 2017-09-27 15:16:02 
- * @Last Modified by:   shuaixc 
- * @Last Modified time: 2017-09-27 15:16:02 
+ * @Last Modified by: shuaixc
+ * @Last Modified time: 2017-09-27 18:32:40
  */
 
 'use strict';
 import React, { Component } from 'react';
 import {
-	Dimensions,
-	ActivityIndicator,
-	Animated,
-	FlatList, ScrollView, StyleSheet, Text, View, Image
+	Dimensions, Image, StyleSheet
 } from 'react-native';
 
 import API from '../../utils/api';
 
-const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
+
 
 const per_page = 10;
-let pageIndex = 0;
-let keyID = 0;
+let pageIndex = 1;
 
 // 数据容器，用来存储数据
 let dataContainer = [];
@@ -41,35 +37,26 @@ class NewsList extends Component {
 
 	constructor(props) {
 		super(props);
+
 		this.state = {
-			isLoading: true,
-			//网络请求状态
-			error: false,
-			errorInfo: '',
-			dataArray: [],
+			sourceData: []
+			, selected: new Map()
+			, refreshing: false
 		};
 	}
 
-
 	componentDidMount() {
-		// //请求数据
-		// this.fetchData();
-
 		API.getRepositories(per_page, pageIndex)
 			.then((responseData) => {
 				let data = responseData.items;
 				// let dataBlob = [];
 
 				data.map(function (item) {
-					dataContainer.push({
-						key: keyID,
-						value: item,
-					});
-					keyID++;
+					dataContainer.push(item);
 				});
 				this.setState({
 					//复制数据源
-					dataArray: dataContainer,
+					sourceData: dataContainer,
 					isLoading: false,
 				});
 
@@ -84,52 +71,102 @@ class NewsList extends Component {
 				});
 			})
 			.done();
+
 	}
 
+	/**
+     * 此函数用于为给定的item生成一个不重复的Key。
+     * Key的作用是使React能够区分同类元素的不同个体，以便在刷新时能够确定其变化的位置，减少重新渲染的开销。
+     * 若不指定此函数，则默认抽取item.key作为key值。
+     * 若item.key也不存在，则使用数组下标
+     *
+     * @param item
+     * @param index
+     * @private
+     */
+	// 这里指定使用数组下标作为唯一索引
+	_keyExtractor = (item, index) => index;
+
+	/**
+     * 使用箭头函数防止不必要的re-render；
+     * 如果使用bind方式来绑定onPressItem，每次都会生成一个新的函数，导致props在===比较时返回false，
+     * 从而触发自身的一次不必要的重新render，也就是FlatListItem组件每次都会重新渲染。
+     *
+     * @param id
+     * @private
+     */
+	_onPressItem = (id) => {
 
 
+		this.setState((state) => {
+			const selected = new Map(state.selected);
+			selected.set(id, !selected.get(id));
 
+			return { selected };
+		});
+
+		const { navigate } = this.props.navigation;
+		navigate('NewsDetail', { user: 'jim' });
+
+	};
+
+	// Header布局
+	_renderHeader = () => (
+		<View><Text>Header</Text></View>
+	);
+
+	// Footer布局
+	_renderFooter = () => (
+		<View><Text style={{ justifyContent: 'center' }}>loading more</Text></View>
+	);
+
+	// 自定义分割线
+	_renderItemSeparatorComponent = ({ highlighted }) => (
+		<View style={{ height: 1, backgroundColor: '#58a' }}></View>
+	);
+
+	// 空布局
+	_renderEmptyView = () => (
+		<View><Text>EmptyView</Text></View>
+	);
+
+	// 下拉刷新
+	_renderRefresh = () => {
+		this.setState({ refreshing: true }); // 开始刷新
+		// 这里模拟请求网络，拿到数据，3s后停止刷新
+		setTimeout(() => {
+			// TODO 提示没有可刷新的内容！
+			this.setState({ refreshing: false });
+		}, 3000);
+	};
 
 	// 上拉加载更多
-	_onEndReached = (event) => {
+	_onEndReached = () => {
 
-
-		// if (this.state.isLoading || !event || dataList.length < 10 || !this.state.hasMore) {
-		if (this.state.isLoading || !event) {
+		//排除第一次
+		if (this.state.sourceData.length < 1) {
 			return;
 		}
-		this.setState({ isLoading: true });
-
 
 		pageIndex++;
-		console.log('pageIndex:', pageIndex);
+
+		console.log('onEndReached,pageIndex:', pageIndex);
 
 		API.getRepositories(per_page, pageIndex)
 			.then((responseData) => {
 				let data = responseData.items;
-				// let dataBlob = [];
-
-				let newData = [];
-
 				data.map(function (item) {
-					newData.push({
-						key: keyID,
-						value: item,
-					});
-					keyID++;
+					dataContainer.push(item);
 				});
-
-
-				// 将新数据添加到数据容器中
-				dataContainer = dataContainer.concat(newData);
-				// 将新数据集合赋予数据状态并更新页面
 				this.setState({
 					//复制数据源
-					dataArray: dataContainer,
+					sourceData: dataContainer,
 					isLoading: false,
 				});
+
 				data = null;
 				// dataBlob = null;
+
 			})
 			.catch((error) => {
 				this.setState({
@@ -138,117 +175,93 @@ class NewsList extends Component {
 				});
 			})
 			.done();
-
-
-
-
-		// // 以下是制造新数据
-		// let newData = [];
-
-		// for (let i = 20; i < 28; i++) {
-		// 	let obj = {
-		// 		id: i
-		// 		, title: i + '生了只小柯基'
-		// 	};
-
-		// 	newData.push(obj);
-		// }
-
-		// // 将新数据添加到数据容器中
-		// dataContainer = dataContainer.concat(newData);
-		// // 将新数据集合赋予数据状态并更新页面
-		// this.setState({
-		// 	sourceData: dataContainer
-		// });
 
 
 	};
 
-	//加载等待的view
-	renderLoadingView() {
+	_renderItem = ({ item }) => {
 		return (
-			<View style={styles.container}>
-				<ActivityIndicator
-					animating={true}
-					style={[styles.gray, { height: 80 }]}
-					color='red'
-					size="large"
-				/>
-			</View>
+			<FlatListItem
+				/* style={[{ height: 134 }]} */
+				id={item.id}
+				onPressItem={this._onPressItem}
+				selected={!!this.state.selected.get(item.id)}
+				title={item.name}
+				content={item.content}
+				img={item.owner.avatar_url}
+				stargazers_count={item.stargazers_count}
+				description={item.description}
+			/>
+
 		);
-	}
 
-	//加载失败view
-	renderErrorView(error) {
-		return (
-			<View style={styles.container}>
-				<Text>
-					Fail: {error}
-				</Text>
-			</View>
-		);
-	}
-
-	//返回itemView
-	renderItemView({ item }) {
-		return (
-			<View style={styles.box}>
-
-				<Image
-					style={[
-						{
-							height: 64,
-							width: 64,
-							borderRadius: 5,
-							marginRight: 8
-						}
-					]}
-					source={{
-						uri: item.value.owner.avatar_url
-					}}
-				/>
-				<Text style={styles.title}>name: {item.value.name} ({item.value.stargazers_count}
-					stars)</Text>
-				<Text style={styles.content}>description: {item.value.description}</Text>
-			</View>
-		);
-	}
-
-	renderData() {
-		return (
-			<ScrollView >
-				<Text >
-					Data:
-				</Text>
-				<AnimatedFlatList
-					data={this.state.dataArray}
-					renderItem={this.renderItemView}
-
-
-					style={{ height: Dimensions.get('window').height - 100 }}
-
-					// 决定当距离内容最底部还有多远时触发onEndReached回调；数值范围0~1，例如：0.5表示可见布局的最底端距离content最底端等于可见布局一半高度的时候调用该回调
-					onEndReachedThreshold={2}
-					// 当列表被滚动到距离内容最底部不足onEndReacchedThreshold设置的距离时调用
-					onEndReached={this._onEndReached}
-
-				/>
-			</ScrollView>
-		);
-	}
+	};
 
 	render() {
-		//第一次加载等待的view
-		if (this.state.isLoading && !this.state.error) {
-			return this.renderLoadingView();
-		} else if (this.state.error) {
-			//请求失败view
-			return this.renderErrorView(this.state.errorInfo);
-		}
-		//加载数据
-		return this.renderData();
+		console.log('render..........');
+		return (
+			<FlatList
+
+				//windowSize={40}
+				//windowSize： 限定绘制的最大数目，默认为21。/
+				//maxToRenderPerBatch：一次绘制的最大数目。
+				//updateCellsBatchingPeriod：更新绘制的间隔时间。
+				//removeClippedSubviews：移除看不见的subview，目前还有bug，可酌情使用。
+				//initialNumToRender：首次绘制的数目。
+
+				data={this.state.sourceData}
+				extraData={this.state.selected}
+				keyExtractor={this._keyExtractor}
+				renderItem={this._renderItem}
+				// 决定当距离内容最底部还有多远时触发onEndReached回调；数值范围0~1，例如：0.5表示可见布局的最底端距离content最底端等于可见布局一半高度的时候调用该回调
+				onEndReachedThreshold={0.9}
+				// 当列表被滚动到距离内容最底部不足onEndReacchedThreshold设置的距离时调用
+				onEndReached={this._onEndReached.bind(this)}
+
+				ListHeaderComponent={this._renderHeader}
+				ListFooterComponent={this._renderFooter}
+				ItemSeparatorComponent={this._renderItemSeparatorComponent}
+				ListEmptyComponent={this._renderEmptyView}
+				refreshing={this.state.refreshing}
+				onRefresh={this._renderRefresh}
+				// 是一个可选的优化，用于避免动态测量内容，+1是加上分割线的高度  
+				//此处数字 应与真实高度相等   否则起反作用  会白屏
+				getItemLayout={(data, index) => ({ length: 80, offset: (80 + 1) * index, index })}
+			/>
+		);
 	}
 }
+
+class FlatListItem extends PureComponent {
+	_onPress = () => {
+
+
+		this.props.onPressItem(this.props.id);
+	};
+
+	render() {
+		return (
+			<TouchableOpacity
+				{...this.props}
+				onPress={this._onPress}
+				style={{ height: 80, justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row' }}
+			>
+				<Image
+					style={[{ height: 60, width: 60, borderRadius: 5, margin: 5 }]}
+					source={{ uri: this.props.img }}
+				/>
+				<View style={{ justifyContent: 'center', padding: 5 }}>
+					<Text style={styles.title}>name: {this.props.title} ({this.props.stargazers_count}
+						stars)</Text>
+					<Text style={styles.content}> {this.props.description}</Text>
+				</View>
+
+			</TouchableOpacity>
+		);
+	}
+}
+
+
 
 const styles = StyleSheet.create({
 	container: {
@@ -276,4 +289,6 @@ const styles = StyleSheet.create({
 
 
 });
-module.exports = NewsList;
+
+
+export default NewsList;
