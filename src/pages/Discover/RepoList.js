@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-27 15:16:34 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-27 18:03:28
+ * @Last Modified time: 2017-09-27 21:17:53
  */
 import React, { PureComponent } from 'react';
 import { FlatList, TouchableOpacity, Text, View } from 'react-native';
@@ -117,7 +117,7 @@ class RepoList extends PureComponent {
 
 	// Footer布局
 	_renderFooter = () => (
-		<View style={{ justifyContent: 'center' }}><Text style={{ width: 140, justifyContent: 'center' }}>loading more</Text></View>
+		<View style={{ justifyContent: 'center' }}><Text style={{ width: 140, justifyContent: 'center' }}>loading more....</Text></View>
 	);
 
 	// 自定义分割线
