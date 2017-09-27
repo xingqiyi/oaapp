@@ -1,3 +1,9 @@
+/*
+ * @Author: shuaixc 
+ * @Date: 2017-09-27 15:16:34 
+ * @Last Modified by: shuaixc
+ * @Last Modified time: 2017-09-27 15:16:56
+ */
 import React, { PureComponent } from 'react';
 import { FlatList, TouchableOpacity, Text, View } from 'react-native';
 
@@ -17,6 +23,12 @@ let pageIndex = 1;
 let dataContainer = [];
 
 
+/**
+ * PureComponent 性能
+ * 
+ * @class NewsList
+ * @extends {PureComponent}
+ */
 class NewsList extends PureComponent {
 
 	constructor(props) {
@@ -218,8 +230,6 @@ class NewsList extends PureComponent {
 
 class FlatListItem extends PureComponent {
 	_onPress = () => {
-
-
 		this.props.onPressItem(this.props.id);
 	};
 

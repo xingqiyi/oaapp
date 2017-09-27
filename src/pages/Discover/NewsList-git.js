@@ -1,6 +1,10 @@
-/**
- * Created by JokAr on 2017/4/12.
+/*
+ * @Author: shuaixc 
+ * @Date: 2017-09-27 15:16:02 
+ * @Last Modified by:   shuaixc 
+ * @Last Modified time: 2017-09-27 15:16:02 
  */
+
 'use strict';
 import React, { Component } from 'react';
 import {
@@ -22,6 +26,12 @@ let keyID = 0;
 let dataContainer = [];
 
 
+/**
+ * 
+ * 
+ * @class NewsList
+ * @extends {Component}
+ */
 class NewsList extends Component {
 
 

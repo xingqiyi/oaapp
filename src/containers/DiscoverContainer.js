@@ -2,31 +2,31 @@
  * @Author: shuaixc 
  * @Date: 2017-09-11 15:03:08 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-20 11:46:17
+ * @Last Modified time: 2017-09-27 16:50:04
  */
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import NewsList from '../pages/Discover/NewsList';
-import * as newsCreators from '../actions/news';
+import RepoList from '../pages/Discover/RepoList';
+import * as repoCreators from '../actions/repo';
 
 class DiscoverContainer extends React.Component {
 	render() {
-		return <NewsList {...this.props} />;
+		return <RepoList {...this.props} />;
 	}
 }
 
 const mapStateToProps = (state) => {
-	const { news } = state;
+	const { repo } = state;
 	return {
-		news
+		repo
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
-	const newsActions = bindActionCreators(newsCreators, dispatch);
+	const repoActions = bindActionCreators(repoCreators, dispatch);
 	return {
-		newsActions
+		repoActions
 	};
 };
 
