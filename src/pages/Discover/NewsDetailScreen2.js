@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-12 09:25:01 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-13 22:32:04
+ * @Last Modified time: 2017-09-28 17:47:38
  */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -17,7 +17,7 @@ const propTypes = {
 	navigation: PropTypes.object,
 };
 
-  
+
 
 /**
  * 
@@ -53,7 +53,7 @@ export default class NewsDetailScreen2 extends React.Component {
 
 
 				<View style={[{ margin: 10 }]}>
-					
+
 					<Text>请求后台数据示例:</Text>
 					<Text>fetch:</Text>
 					<Text>

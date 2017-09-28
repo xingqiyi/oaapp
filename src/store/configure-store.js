@@ -16,6 +16,16 @@ if (__DEV__) {
 	console.log('__DEV__');
 	middlewares.push(logger);
 }
+else {
+
+	global.console = {
+		info: () => { },
+		log: () => { },
+		warn: () => { },
+		debug: () => { },
+		error: () => { },
+	};
+}
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 export default function configureStore(initialState) {

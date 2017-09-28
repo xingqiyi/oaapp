@@ -2,17 +2,12 @@
  * @Author: shuaixc 
  * @Date: 2017-09-27 15:16:34 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-28 09:25:16
+ * @Last Modified time: 2017-09-28 17:42:23
  */
 import React, { PureComponent } from 'react';
 import { FlatList, TouchableOpacity, Text, View } from 'react-native';
 
-
-import {
-	Dimensions, Image, StyleSheet
-} from 'react-native';
-
-import API from '../../utils/api';
+import { Dimensions, Image, StyleSheet } from 'react-native';
 
 import PropTypes from 'prop-types';
 
@@ -21,8 +16,9 @@ const propTypes = {
 	repoActions: PropTypes.object
 };
 
-const per_page = 10;
+// const per_page = 10;
 let pageIndex = 1;
+let typeNo = 1;
 
 // 数据容器，用来存储数据
 let dataContainer = [];
@@ -51,36 +47,18 @@ class RepoList extends PureComponent {
 		const { repoActions } = this.props;
 		console.info('newsList,newsAction:', repoActions);
 
-		repoActions.requestRepoList(false, true, pageIndex);
-
-
-		// API.getRepositories(per_page, pageIndex)
-		// 	.then((responseData) => {
-		// 		let data = responseData.items;
-		// 		// let dataBlob = [];
-
-		// 		data.map(function (item) {
-		// 			dataContainer.push(item);
-		// 		});
-		// 		this.setState({
-		// 			//复制数据源
-		// 			sourceData: dataContainer,
-		// 			isLoading: false,
-		// 		});
-
-		// 		data = null;
-		// 		// dataBlob = null;
-
-		// 	})
-		// 	.catch((error) => {
-		// 		this.setState({
-		// 			error: true,
-		// 			errorInfo: error
-		// 		});
-		// 	})
-		// 	.done();
+		repoActions.requestRepoList(true, true, typeNo);
 
 	}
+
+	//PureComponent 不能使用 shouldComponentUpdate
+	// shouldComponentUpdate() {
+	// 	console.log('should............');
+	// 	return true;
+	// }
+
+
+
 
 	/**
      * 此函数用于为给定的item生成一个不重复的Key。
@@ -138,6 +116,15 @@ class RepoList extends PureComponent {
 			// TODO 提示没有可刷新的内容！
 			this.setState({ refreshing: false });
 		}, 3000);
+
+
+		// this.setState({ refreshing: true }); // 开始刷新
+
+		// const { repoActions } = this.props;
+		// console.info('newsList,newsAction:', repoActions);
+
+		// repoActions.requestRepoList(true, true, typeNo);
+
 	};
 
 	// 上拉加载更多
@@ -148,43 +135,12 @@ class RepoList extends PureComponent {
 		// 	return;
 		// }
 
-		if (pageIndex < 2) {
-			return;
-		}
+		// if (pageIndex < 2) {
+		// 	return;
+		// }
 
 		const { repoActions } = this.props;
-		repoActions.requestRepoList(false, true, ++pageIndex);
-
-
-
-
-		// pageIndex++;
-		// console.log('onEndReached,pageIndex:', pageIndex);
-		// API.getRepositories(per_page, pageIndex)
-		// 	.then((responseData) => {
-		// 		let data = responseData.items;
-		// 		data.map(function (item) {
-		// 			dataContainer.push(item);
-		// 		});
-		// 		this.setState({
-		// 			//复制数据源
-		// 			sourceData: dataContainer,
-		// 			isLoading: false,
-		// 		});
-
-		// 		data = null;
-		// 		// dataBlob = null;
-
-		// 	})
-		// 	.catch((error) => {
-		// 		this.setState({
-		// 			error: true,
-		// 			errorInfo: error
-		// 		});
-		// 	})
-		// 	.done();
-
-
+		repoActions.requestRepoList(false, true, typeNo, true, ++pageIndex);
 	};
 
 	_renderItem = ({ item }) => {
@@ -238,7 +194,7 @@ class RepoList extends PureComponent {
 				keyExtractor={this._keyExtractor}
 				renderItem={this._renderItem}
 				// 决定当距离内容最底部还有多远时触发onEndReached回调；数值范围0~1，例如：0.5表示可见布局的最底端距离content最底端等于可见布局一半高度的时候调用该回调
-				onEndReachedThreshold={0.9}
+				onEndReachedThreshold={0.5}
 				// 当列表被滚动到距离内容最底部不足onEndReacchedThreshold设置的距离时调用
 				onEndReached={this._onEndReached.bind(this)}
 

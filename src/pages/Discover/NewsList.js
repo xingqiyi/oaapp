@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-27 15:16:34 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-27 15:16:56
+ * @Last Modified time: 2017-09-28 15:30:50
  */
 import React, { PureComponent } from 'react';
 import { FlatList, TouchableOpacity, Text, View } from 'react-native';
