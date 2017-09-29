@@ -2,15 +2,12 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-21 10:27:41
+ * @Last Modified time: 2017-09-29 10:56:53
  */
 
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
-
 import { StackNavigator, TabNavigator } from 'react-navigation';
-
-// import MainScreenNavigator from './MainScreenNavigator';
 
 import NewsDetailScreen from '../pages/Discover/NewsDetailScreen';
 import NewsDetailScreen2 from '../pages/Discover/NewsDetailScreen2';
@@ -18,12 +15,15 @@ import ListViewExample from '../pages/Admin/ListViewExample';
 import FlatListExample from '../pages/Admin/FlatListExample';
 import SectionListExample from '../pages/Admin/SectionListExample';
 
-
-
+// 消息
 import ChatContainer from './ChatContainer';
+// 通讯录
 import BookContainer from './BookContainer';
+// 管理
 import AdminContainer from './AdminContainer';
+// 发现
 import DiscoverContainer from './DiscoverContainer';
+// 我的
 import MineContainer from './MineContainer';
 
 const msgIcon = require('../image/mine.png');
@@ -92,8 +92,7 @@ const TabContainer = TabNavigator({
 		screen: MineContainer,
 		navigationOptions: {
 			title: '我的',
-			// Note: By default the icon is only shown on iOS. Search the showIcon option
-			// below.
+			// Note: By default the icon is only shown on iOS. Search the showIcon option below.
 			tabBarIcon: ({ tintColor }) => <Image
 				source={mineIcon}
 				style={[styles.icon, {

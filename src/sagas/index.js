@@ -8,7 +8,8 @@ import { watchRequestNewsList } from './news';
 import { watchRequestRepoList } from './repo';
 
 export default function* rootSaga() {
-	yield [fork(watchRequestTypeList),
+	yield [
+		fork(watchRequestTypeList),
 		fork(watchRequestArticleList),
 		fork(watchRequestNewsList),
 		fork(watchRequestRepoList)

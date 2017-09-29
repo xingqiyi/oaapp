@@ -6,8 +6,7 @@ export function requestRepoList(
 	loading,
 	typeId,
 	isLoadMore,
-	page = 1
-) {
+	page = 1) {
 	return {
 		type: types.REQUEST_REPO_LIST,
 		isRefreshing,
