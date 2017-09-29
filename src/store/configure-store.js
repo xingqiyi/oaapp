@@ -17,7 +17,6 @@ if (__DEV__) {
 	middlewares.push(logger);
 }
 else {
-
 	global.console = {
 		info: () => { },
 		log: () => { },
