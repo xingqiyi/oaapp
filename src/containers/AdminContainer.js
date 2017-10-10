@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-13 10:53:25
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-21 10:35:00
+ * @Last Modified time: 2017-10-10 17:25:05
  */
 import React from 'react';
 import { connect } from 'react-redux';
@@ -75,6 +75,22 @@ class AdminScreen extends React.Component {
 						</Button>
 					</Flex.Item>
 
+				</Flex>
+
+				<Flex>
+					<Flex.Item>
+						<Button
+							className="btn"
+							type="primary"
+							size="small"
+							inline
+							icon="check-circle-o"
+							style={{ margin: 10 }}
+							onClick={() => navigate('EchartsExample', { user: 'jim' })}
+						>
+							echartsExam
+						</Button>
+					</Flex.Item>
 				</Flex>
 
 			</View>

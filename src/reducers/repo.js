@@ -35,7 +35,7 @@ export default function read(state = initialState, action) {
 
 function combine(state, action) {
 	state.repoList[action.typeId] = action.repoList;
-	
+
 	return state.repoList;
 }
 

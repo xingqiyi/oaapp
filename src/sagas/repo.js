@@ -12,8 +12,7 @@ export function* requestRepoList(
 	loading,
 	typeId,
 	isLoadMore,
-	page
-) {
+	page) {
 	try {
 		yield put(fetchRepoList(isRefreshing, loading, isLoadMore));
 
@@ -50,7 +49,7 @@ export function* watchRequestRepoList() {
 			types.REQUEST_REPO_LIST
 		);
 		yield fork(
-			requestRepoList,
+			requestRepoLIST,
 			isRefreshing,
 			loading,
 			typeId,

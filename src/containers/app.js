@@ -2,19 +2,24 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-29 10:56:53
+ * @Last Modified time: 2017-10-10 17:33:52
  */
 
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 
+
+// Pages:
 import NewsDetailScreen from '../pages/Discover/NewsDetailScreen';
 import NewsDetailScreen2 from '../pages/Discover/NewsDetailScreen2';
 import ListViewExample from '../pages/Admin/ListViewExample';
 import FlatListExample from '../pages/Admin/FlatListExample';
 import SectionListExample from '../pages/Admin/SectionListExample';
+import EchartsExample from '../pages/Admin/EchartsExample';
 
+
+// Tabs:
 // 消息
 import ChatContainer from './ChatContainer';
 // 通讯录
@@ -39,103 +44,104 @@ const styles = StyleSheet.create({
 	}
 });
 
-const TabContainer = TabNavigator({
-	Msg: {
-		screen: ChatContainer,
-		navigationOptions: {
-			title: '消息',
-			// Note: By default the icon is only shown on iOS. Search the showIcon option
-			// below.
-			tabBarIcon: ({ tintColor }) => <Image
-				source={msgIcon}
-				style={[styles.icon, {
-					tintColor
-				}]} />
-		}
-	},
-
-	Book: {
-		screen: BookContainer,
-		navigationOptions: {
-			title: '通讯录',
-			tabBarIcon: ({ tintColor }) => <Image
-				source={bookIcon}
-				style={[styles.icon, {
-					tintColor
-				}]} />
-		}
-	},
-
-	Admin: {
-		screen: AdminContainer,
-		navigationOptions: {
-			title: '管理',
-			tabBarIcon: ({ tintColor }) => <Image source={adminIcon} style={[styles.icon, { tintColor }]} />
-		}
-	},
-
-	Discover: {
-		screen: DiscoverContainer,
-		navigationOptions: {
-			title: '发现',
-			tabBarIcon: ({ tintColor }) => <Image
-				source={discoverIcon}
-				style={[styles.icon, {
-					tintColor
-				}]}
-			/>
-
-		}
-	},
-
-	Mine: {
-		screen: MineContainer,
-		navigationOptions: {
-			title: '我的',
-			// Note: By default the icon is only shown on iOS. Search the showIcon option below.
-			tabBarIcon: ({ tintColor }) => <Image
-				source={mineIcon}
-				style={[styles.icon, {
-					tintColor
-				}]} />
-		}
-	}
-
-}, {
-	tabBarPosition: 'bottom',
-	lazy: true, //  是否根据需要懒加载标签，而不是提前渲染
-	// animationEnabled: true, //是否在切换标签时启动动画
-	initialRouteName: 'Discover',
-
-	tabBarOptions: {
-
-		activeTintColor: '#29a1f7',
-		inactiveTintColor: '#888',
-
-		showIcon: true,
-
-		pressOpacity: 0.1,
-
-		indicatorStyle: {
-			opacity: 0
-		},
-		tabStyle: {
-			padding: 0
-		},
-		style: {
-			height: 60,
-			// border: 'none',
-			backgroundColor: '#ccc',
-			zIndex: 0,
-			position: 'relative'
+const TabContainer = TabNavigator(
+	{
+		Msg: {
+			screen: ChatContainer,
+			navigationOptions: {
+				title: '消息',
+				// Note: By default the icon is only shown on iOS. Search the showIcon option
+				// below.
+				tabBarIcon: ({ tintColor }) => <Image
+					source={msgIcon}
+					style={[styles.icon, {
+						tintColor
+					}]} />
+			}
 		},
 
-		// tabStyle: {   backgroundColor: '#ccc', }, labelStyle: {   fontSize: 11,
-		// paddingVertical: 0,   marginTop: -4 }, iconStyle: {   marginTop: -3 },
+		Book: {
+			screen: BookContainer,
+			navigationOptions: {
+				title: '通讯录',
+				tabBarIcon: ({ tintColor }) => <Image
+					source={bookIcon}
+					style={[styles.icon, {
+						tintColor
+					}]} />
+			}
+		},
 
-	}
+		Admin: {
+			screen: AdminContainer,
+			navigationOptions: {
+				title: '管理',
+				tabBarIcon: ({ tintColor }) => <Image source={adminIcon} style={[styles.icon, { tintColor }]} />
+			}
+		},
 
-});
+		Discover: {
+			screen: DiscoverContainer,
+			navigationOptions: {
+				title: '发现',
+				tabBarIcon: ({ tintColor }) => <Image
+					source={discoverIcon}
+					style={[styles.icon, {
+						tintColor
+					}]}
+				/>
+
+			}
+		},
+
+		Mine: {
+			screen: MineContainer,
+			navigationOptions: {
+				title: '我的',
+				// Note: By default the icon is only shown on iOS. Search the showIcon option below.
+				tabBarIcon: ({ tintColor }) => <Image
+					source={mineIcon}
+					style={[styles.icon, {
+						tintColor
+					}]} />
+			}
+		}
+
+	}, {
+		tabBarPosition: 'bottom',
+		lazy: true, //  是否根据需要懒加载标签，而不是提前渲染
+		// animationEnabled: true, //是否在切换标签时启动动画
+		initialRouteName: 'Discover',
+
+		tabBarOptions: {
+
+			activeTintColor: '#29a1f7',
+			inactiveTintColor: '#888',
+
+			showIcon: true,
+
+			pressOpacity: 0.1,
+
+			indicatorStyle: {
+				opacity: 0
+			},
+			tabStyle: {
+				padding: 0
+			},
+			style: {
+				height: 60,
+				// border: 'none',
+				backgroundColor: '#ccc',
+				zIndex: 0,
+				position: 'relative'
+			},
+
+			// tabStyle: {   backgroundColor: '#ccc', }, labelStyle: {   fontSize: 11,
+			// paddingVertical: 0,   marginTop: -4 }, iconStyle: {   marginTop: -3 },
+
+		}
+
+	});
 
 const App = StackNavigator({
 	Home: {
@@ -161,7 +167,13 @@ const App = StackNavigator({
 	},
 	ListViewExample: {
 		screen: ListViewExample
+	},
+
+	EchartsExample: {
+		screen: EchartsExample
 	}
+
+
 }
 	// , { 	mode:'modal', }
 );

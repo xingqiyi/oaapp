@@ -15,6 +15,13 @@ middlewares.push(sagaMiddleware);
 if (__DEV__) {
 	console.log('__DEV__');
 	middlewares.push(logger);
+
+
+
+	//清除 
+	//clear the remote debugger warning
+	console.disableYellowBox = true;
+	console.ignoredYellowBox = ['Warning: ...'];
 }
 else {
 	global.console = {
