@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-13 10:53:25
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-10 17:25:05
+ * @Last Modified time: 2017-10-13 17:48:12
  */
 import React from 'react';
 import { connect } from 'react-redux';
@@ -71,7 +71,7 @@ class AdminScreen extends React.Component {
 							style={{ margin: 10 }}
 							onClick={() => navigate('NewsDetail', { user: 'jim' })}
 						>
-							newsdetail
+							请求后台数据
 						</Button>
 					</Flex.Item>
 
@@ -88,7 +88,33 @@ class AdminScreen extends React.Component {
 							style={{ margin: 10 }}
 							onClick={() => navigate('EchartsExample', { user: 'jim' })}
 						>
-							echartsExam
+							百度echarts
+						</Button>
+					</Flex.Item>
+					<Flex.Item>
+						<Button
+							className="btn"
+							type="primary"
+							size="small"
+							inline
+							icon="check-circle-o"
+							style={{ margin: 10 }}
+							onClick={() => navigate('CameraExample', { user: 'jim' })}
+						>
+							拍照
+						</Button>
+					</Flex.Item>
+					<Flex.Item>
+						<Button
+							className="btn"
+							type="primary"
+							size="small"
+							inline
+							icon="check-circle-o"
+							style={{ margin: 10 }}
+							onClick={() => navigate('ImagePickerExample', { user: 'jim' })}
+						>
+							读取相册
 						</Button>
 					</Flex.Item>
 				</Flex>

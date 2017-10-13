@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-10 17:33:52
+ * @Last Modified time: 2017-10-13 17:49:01
  */
 
 import React from 'react';
@@ -17,6 +17,9 @@ import ListViewExample from '../pages/Admin/ListViewExample';
 import FlatListExample from '../pages/Admin/FlatListExample';
 import SectionListExample from '../pages/Admin/SectionListExample';
 import EchartsExample from '../pages/Admin/EchartsExample';
+import CameraExample from '../pages/Admin/CameraExample';
+import ImagePickerExample from '../pages/Admin/ImagePickerExample';
+
 
 
 // Tabs:
@@ -171,7 +174,18 @@ const App = StackNavigator({
 
 	EchartsExample: {
 		screen: EchartsExample
-	}
+	},
+
+	CameraExample: {
+		screen: CameraExample
+	},
+	ImagePickerExample: {
+		screen: ImagePickerExample
+	},
+
+
+
+
 
 
 }

@@ -7,7 +7,7 @@ import { request } from '../utils/RequestUtil';
 import { REPO_LIST } from '../constants/Urls';
 import { fetchRepoList, receiveRepoList } from '../actions/repo';
 
-export function* requestRepoList(
+export function* requestRepoLIST(
 	isRefreshing,
 	loading,
 	typeId,

@@ -70,7 +70,12 @@ npm test
 ## react navigation
 
 
+## react-native-camera
+https://github.com/lwansbrough/react-native-camera
 
+
+## react-native-image-picker
+https://github.com/react-community/react-native-image-picker
 
 
 
