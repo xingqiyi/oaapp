@@ -11,9 +11,8 @@ import {
 import { Flex, Button } from 'antd-mobile';
 
 
-
-
 import ImagePicker from 'react-native-image-picker';
+// import ImagePicker from 'react-native-image-crop-picker';
 
 
 import PropTypes from 'prop-types';
@@ -70,11 +69,16 @@ class ImagePickerExample extends React.Component {
 	}
 
 	takePicture() {
+
 		var options = {
-			title: 'Select Avatar',
-			customButtons: [
-				{ name: 'fb', title: 'Choose Photo from Facebook' },
-			],
+			//底部弹出框选项
+			title: '请选择',
+			cancelButtonTitle: '取消',
+			takePhotoButtonTitle: '拍照',
+			chooseFromLibraryButtonTitle: '选择相册',
+			quality: 0.75,
+			allowsEditing: true,
+			noData: false,
 			storageOptions: {
 				skipBackup: true,
 				path: 'images'
@@ -108,6 +112,16 @@ class ImagePickerExample extends React.Component {
 				});
 			}
 		});
+
+
+		// ImagePicker.openPicker({
+		// 	multiple: true
+		// }).then(images => {
+		// 	console.log(images);
+		// });
+
+
+
 	}
 }
 
