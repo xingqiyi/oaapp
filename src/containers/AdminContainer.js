@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-13 10:53:25
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-13 17:48:12
+ * @Last Modified time: 2017-10-20 14:35:37
  */
 import React from 'react';
 import { connect } from 'react-redux';
@@ -118,6 +118,50 @@ class AdminScreen extends React.Component {
 						</Button>
 					</Flex.Item>
 				</Flex>
+
+				<Flex>
+					<Flex.Item>
+						<Button
+							className="btn"
+							type="primary"
+							size="small"
+							inline
+							icon="check-circle-o"
+							style={{ margin: 10 }}
+							onClick={() => navigate('JpushExample', { user: 'jim' })}
+						>
+							Jpush 消息推送
+						</Button>
+					</Flex.Item>
+					<Flex.Item>
+						<Button
+							className="btn"
+							type="primary"
+							size="small"
+							inline
+							icon="check-circle-o"
+							style={{ margin: 10 }}
+							onClick={() => navigate('CameraExample', { user: 'jim' })}
+						>
+							ddd
+						</Button>
+					</Flex.Item>
+					<Flex.Item>
+						<Button
+							className="btn"
+							type="primary"
+							size="small"
+							inline
+							icon="check-circle-o"
+							style={{ margin: 10 }}
+							onClick={() => navigate('ImagePickerExample', { user: 'jim' })}
+						>
+							sss
+						</Button>
+					</Flex.Item>
+				</Flex>
+
+
 
 			</View>
 		);

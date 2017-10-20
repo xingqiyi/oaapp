@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-13 17:49:01
+ * @Last Modified time: 2017-10-20 14:33:58
  */
 
 import React from 'react';
@@ -19,6 +19,7 @@ import SectionListExample from '../pages/Admin/SectionListExample';
 import EchartsExample from '../pages/Admin/EchartsExample';
 import CameraExample from '../pages/Admin/CameraExample';
 import ImagePickerExample from '../pages/Admin/ImagePickerExample';
+import JpushExample from '../pages/Admin/JpushExample';
 
 
 
@@ -181,6 +182,9 @@ const App = StackNavigator({
 	},
 	ImagePickerExample: {
 		screen: ImagePickerExample
+	},
+	JpushExample: {
+		screen: JpushExample
 	},
 
 

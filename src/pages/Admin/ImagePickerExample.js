@@ -59,7 +59,7 @@ class ImagePickerExample extends React.Component {
 
 
 
-				<Text style={styles.capture} onPress={this.takePicture.bind(this)}>[选择]</Text>
+				<Text style={styles.capture} onPress={this.takePicture.bind(this)}>[选择图片]</Text>
 
 
 
@@ -140,6 +140,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		borderRadius: 5,
 		color: '#000',
+		height: '8%',
 		padding: 10,
 		margin: 40
 	}
