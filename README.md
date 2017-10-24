@@ -65,18 +65,22 @@ npm run format
 npm test
 ```
 
-## Jest
+### Jest
 
-## [react-navigation](https://github.com/react-community/react-navigation)
-
-
-## [react-native-camera](https://github.com/lwansbrough/react-native-camera)
+### react-navigation
+https://github.com/react-community/react-navigation
 
 
-## [react-native-image-picker](https://github.com/react-community/react-native-image-picker)
+### react-native-camera
+https://github.com/lwansbrough/react-native-camera
 
 
-## [jpush](https://github.com/jpush/jpush-react-native)
+### react-native-image-picker
+https://github.com/react-community/react-native-image-picker
+
+
+### jpush
+https://github.com/jpush/jpush-react-native
 ```
   npm run configureJPush <yourAppKey> <yourModuleName>
 ```

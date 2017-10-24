@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 15:33:33 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-19 15:24:01
+ * @Last Modified time: 2017-10-20 18:23:00
  */
 
 import React from 'react';
@@ -11,6 +11,9 @@ import { List } from 'antd-mobile';
 
 const Item = List.Item;
 const Brief = Item.Brief;
+
+
+const msgIcon = require('../image/koubei.png');
 
 
 
@@ -40,7 +43,48 @@ export default class MineScreen extends React.Component {
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
 			>
-				<List renderHeader={() => '左侧无icon2'}>
+
+				<List renderHeader={() => '带缩略图'}>
+
+					<Item
+						thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+						arrow="horizontal"
+						onClick={() => { }}
+					>My wallet</Item>
+
+					<Item thumb={
+						<Image
+							source={{ uri: 'https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png' }}
+							style={{ width: 29, height: 29 }}
+						/>
+					}
+
+					>
+						thumb
+					</Item>
+					<Item
+						thumb="https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png"
+						arrow="horizontal"
+					>
+						thumb
+					</Item>
+					<Item
+						extra={
+							<Image
+								source={{
+									uri:
+									'https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png'
+								}}
+								style={{ width: 29, height: 29 }}
+							/>
+						}
+						arrow="horizontal"
+					>
+						extra为Image
+					</Item>
+				</List>
+
+				<List renderHeader={() => '无缩略图'}>
 					<Item data-seed="logId">标题文字点击无反馈，文字超长则隐藏，文字超长则隐藏</Item>
 					<Item wrap>文字超长折行文字超长折行文字超长折行文字超长折行文字超长折行</Item>
 					<Item disabled extra="箭头向右" arrow="horizontal" onClick={() => { }}>
@@ -93,31 +137,7 @@ export default class MineScreen extends React.Component {
 						底部对齐
 					</Item>
 				</List>
-				<List renderHeader={() => '带缩略图'}>
-					<Item thumb="https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png">
-						thumb
-					</Item>
-					<Item
-						thumb="https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png"
-						arrow="horizontal"
-					>
-						thumb
-					</Item>
-					<Item
-						extra={
-							<Image
-								source={{
-									uri:
-									'https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png'
-								}}
-								style={{ width: 29, height: 29 }}
-							/>
-						}
-						arrow="horizontal"
-					>
-						extra为Image
-					</Item>
-				</List>
+
 			</ScrollView>
 		);
 	}
