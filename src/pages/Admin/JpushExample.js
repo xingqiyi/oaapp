@@ -16,6 +16,8 @@ const propTypes = {
 	newsActions: PropTypes.object,
 };
 
+let navigate;
+
 
 class JpushExample extends React.Component {
 
@@ -62,8 +64,15 @@ class JpushExample extends React.Component {
 
 		//点击通知进入应用的主页，相当于跳转到制定的页面
 		JPushModule.addReceiveOpenNotificationListener((map) => {
-			//console.log("Opening notification!");
+			console.log('Opening notification!');
+
+			navigate('NewsDetail2', { user: 'jim' });
+
+
+
 			// this.props.navigator.replace({ name: 'HomePage', component: HomePage });
+
+
 		});
 
 	}
@@ -78,6 +87,8 @@ class JpushExample extends React.Component {
 	render() {
 
 		const { news } = this.props;
+
+		navigate = this.props.navigation.navigate;
 
 		console.info(news);
 
