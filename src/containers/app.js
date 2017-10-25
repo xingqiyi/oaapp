@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-20 14:33:58
+ * @Last Modified time: 2017-10-25 16:05:37
  */
 
 import React from 'react';
@@ -152,7 +152,11 @@ const App = StackNavigator({
 		screen: TabContainer
 	},
 	NewsDetail: {
-		screen: NewsDetailScreen
+		screen: NewsDetailScreen,
+		navigationOptions: ({ navigation }) => ({
+			gesturesEnabled: true, //是否支持滑动返回收拾，iOS默认支持，安卓默认关闭
+			gestureResponseDistance: { horizontal: 300 },//对象覆盖触摸从屏幕边缘开始的距离，以识别手势。 它需要以下属性：
+		})
 	},
 	NewsDetail2: {
 		// `NewsDetailScreen2`是一个React组件，将作为屏幕的主要内容。
@@ -161,7 +165,9 @@ const App = StackNavigator({
 		// 可选：在Web应用程序中深链接或使用react-navigation导航时，将使用此路径：  path: 'people/:name',
 		// 从路径中提取动作(action)和路由参数.
 		// 可选：覆盖屏幕的`navigationOptions`（即每个组件中的`navigationOptions`）
-		navigationOptions: ({ navigation }) => ({ title: `${navigation.state.params.name}'s Profile'` })
+		navigationOptions: ({ navigation }) => ({
+			title: `${navigation.state.params.name}'s Profile'`
+		})
 	},
 
 

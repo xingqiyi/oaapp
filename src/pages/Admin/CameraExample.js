@@ -60,14 +60,14 @@ class CameraExample extends React.Component {
 			<View style={styles.container}>
 
 
-				<Camera
+				{<Camera
 					ref={(cam) => {
 						this.camera = cam;
 					}}
 					style={styles.preview}
 					aspect={Camera.constants.Aspect.fill}>
 					<Text style={styles.capture} onPress={this.takePicture.bind(this)}>[拍照]</Text>
-				</Camera>
+				</Camera>}
 
 
 
