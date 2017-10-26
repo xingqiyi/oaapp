@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-12 09:24:54 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-26 16:43:27
+ * @Last Modified time: 2017-10-26 10:57:25
  */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -71,15 +71,11 @@ export default class NewsDetailScreen extends React.Component {
 
 				<Flex>
 					<Button
-						className="btn"
-						type="primary"
-						size="small"
-						inline
-						icon="check-circle-o"
+
 						style={{ margin: 20 }}
 						onClick={() => navigate('NewsDetail2', { user: 'jim' })}
 					>
-						新闻详情2
+						请求数据
 					</Button>
 				</Flex>
 

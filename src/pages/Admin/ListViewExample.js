@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 10:53:51 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-19 15:22:34
+ * @Last Modified time: 2017-10-26 14:51:06
  */
 /* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
@@ -34,7 +34,7 @@ let pageIndex = 0;
  * @class ListViewExample
  * @extends {React.Component}
  */
-export default class ListViewExample extends React.Component {
+class ListViewExample extends React.Component {
 	constructor(props) {
 		super(props);
 		this._genData = (pIndex = 0) => {
@@ -203,5 +203,9 @@ export default class ListViewExample extends React.Component {
 			onEndReachedThreshold={10} />);
 	}
 }
+
+
 export const title = 'ListView';
 export const description = 'ListView example';
+
+export default ListViewExample;

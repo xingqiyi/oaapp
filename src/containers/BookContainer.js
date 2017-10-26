@@ -2,13 +2,13 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 9:13:14 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-20 17:20:56
+ * @Last Modified time: 2017-10-26 11:02:36
  */
 
 
 
 import React from 'react';
-import { Button } from 'react-native';
+import { Button } from 'antd-mobile';
 
 export default class BookContainer extends React.Component {
 	// static navigationOptions = {
@@ -22,10 +22,23 @@ export default class BookContainer extends React.Component {
 
 	render() {
 		return (
-			<Button
-				onPress={() => this.props.navigation.navigate('Notifications')}
-				title="通讯录页面"
-			/>
+			// <Button
+			// 	onPress={() => this.props.navigation.navigate('Notifications')}
+			// 	title="通讯录页面"
+			// />
+
+			<Button style={{ margin: 10 }}
+
+				className="btn"
+				type="primary"
+				inline
+				icon="check-circle-o"
+
+				onClick={() => navigate('FlatListExample', { user: 'jim' })}>
+				通讯录页面
+			</Button>
+
+
 		);
 	}
 } 
