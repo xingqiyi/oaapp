@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-27 15:16:34 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-09-28 17:42:23
+ * @Last Modified time: 2017-10-27 16:35:22
  */
 import React, { PureComponent } from 'react';
 import { FlatList, TouchableOpacity, Text, View } from 'react-native';
@@ -74,7 +74,9 @@ class RepoList extends PureComponent {
      * 如果使用bind方式来绑定onPressItem，每次都会生成一个新的函数，导致props在===比较时返回false，
      * 从而触发自身的一次不必要的重新render，也就是FlatListItem组件每次都会重新渲染。
      */
-	_onPressItem = (id) => {
+	_onPressItem = (id, item) => {
+
+		// alert('id: ' + id + content);
 
 		this.setState((state) => {
 			const selected = new Map(state.selected);
@@ -84,7 +86,9 @@ class RepoList extends PureComponent {
 		});
 
 		const { navigate } = this.props.navigation;
-		navigate('NewsDetail', { user: 'jim' });
+
+		navigate('NewsContent', { id: id, item });
+
 
 	};
 
@@ -145,16 +149,28 @@ class RepoList extends PureComponent {
 
 	_renderItem = ({ item }) => {
 		return (
+			// <FlatListItem
+			// 	id={item.id}
+			// 	onPressItem={this._onPressItem}
+			// 	selected={!!this.state.selected.get(item.id)}
+			// 	title={item.name}
+			// 	content={item.content}
+			// 	img={item.owner.avatar_url}
+			// 	stargazers_count={item.stargazers_count}
+			// 	description={item.description}
+			// />
 			<FlatListItem
-				/* style={[{ height: 134 }]} */
 				id={item.id}
-				onPressItem={this._onPressItem}
+
+				//onPressItem={this._onPressItem(item.id, item.content)} 
+				onPressItem={() => this._onPressItem(item.id, item)} //传参方式
+
 				selected={!!this.state.selected.get(item.id)}
-				title={item.name}
-				content={item.content}
-				img={item.owner.avatar_url}
-				stargazers_count={item.stargazers_count}
-				description={item.description}
+				title={item.title}
+				content={item.title}
+				img={item.author.avatar_url}
+				stargazers_count={item.visit_count}
+				description={item.title}
 			/>
 
 		);
@@ -235,9 +251,15 @@ class FlatListItem extends PureComponent {
 					source={{ uri: this.props.img }}
 				/>
 				<View style={{ justifyContent: 'center', padding: 5 }}>
-					<Text style={styles.title}>name: {this.props.title} ({this.props.stargazers_count}
+
+					{/* <Text style={styles.title}>name: {this.props.title} ({this.props.stargazers_count}
 						stars)</Text>
-					<Text style={styles.content}> {this.props.description}</Text>
+					<Text style={styles.content}> {this.props.description}</Text> */}
+
+					<Text style={styles.title}>{this.props.title} </Text>
+					<Text style={styles.content}> ({this.props.stargazers_count} stars)</Text>
+
+
 				</View>
 
 			</TouchableOpacity>

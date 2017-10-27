@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-26 14:46:16
+ * @Last Modified time: 2017-10-27 11:56:02
  */
 
 import React from 'react';
@@ -13,6 +13,9 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 // Pages:
 import NewsDetailScreen from '../pages/Discover/NewsDetailScreen';
 import NewsDetailScreen2 from '../pages/Discover/NewsDetailScreen2';
+import NewsContent from '../pages/Discover/NewsContent';
+
+
 import ListViewExample from '../pages/Admin/ListViewExample';
 import FlatListExample from '../pages/Admin/FlatListExample';
 import SectionListExample from '../pages/Admin/SectionListExample';
@@ -20,6 +23,8 @@ import EchartsExample from '../pages/Admin/EchartsExample';
 import CameraExample from '../pages/Admin/CameraExample';
 import ImagePickerExample from '../pages/Admin/ImagePickerExample';
 import JpushExample from '../pages/Admin/JpushExample';
+
+
 
 
 
@@ -153,7 +158,7 @@ const App = StackNavigator({
 	},
 	NewsDetail: {
 		screen: NewsDetailScreen,
-		path: 'pages/Home',
+		// path: 'pages/Home',
 
 		navigationOptions: ({ navigation }) => ({
 
@@ -161,7 +166,7 @@ const App = StackNavigator({
 
 			// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
 			gesturesEnabled: true, //是否支持滑动返回收拾，iOS默认支持，安卓默认关闭
-			gestureResponseDistance: { horizontal: 1, vertical: 1 },//对象 覆盖触摸从屏幕边缘开始的距离，以识别手势。默认值 25,135
+			// gestureResponseDistance: { horizontal: 1, vertical: 1 },//对象 覆盖触摸从屏幕边缘开始的距离，以识别手势。默认值 25,135
 		})
 	},
 	NewsDetail2: {
@@ -181,7 +186,7 @@ const App = StackNavigator({
 			headerMode: 'float',//边缘滑动返回上级页面时动画效果。
 			// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
 			gesturesEnabled: true, //是否支持滑动返回收拾，iOS默认支持，安卓默认关闭
-			gestureResponseDistance: { horizontal: 1, vertical: 1 },//对象 覆盖触摸从屏幕边缘开始的距离，以识别手势。默认值 25,135
+			// gestureResponseDistance: { horizontal: 1, vertical: 1 },//对象 覆盖触摸从屏幕边缘开始的距离，以识别手势。默认值 25,135
 		}),
 		screen: FlatListExample
 	},
@@ -190,7 +195,7 @@ const App = StackNavigator({
 			headerMode: 'float',//边缘滑动返回上级页面时动画效果。
 			// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
 			gesturesEnabled: true, //是否支持滑动返回收拾，iOS默认支持，安卓默认关闭
-			gestureResponseDistance: { horizontal: 1, vertical: 1 },//对象 覆盖触摸从屏幕边缘开始的距离，以识别手势。默认值 25,135
+			// gestureResponseDistance: { horizontal: 1, vertical: 1 },//对象 覆盖触摸从屏幕边缘开始的距离，以识别手势。默认值 25,135
 		}),
 		screen: ListViewExample
 	},
@@ -209,6 +214,10 @@ const App = StackNavigator({
 		screen: JpushExample
 	},
 
+	NewsContent:
+	{
+		screen: NewsContent
+	},
 
 
 

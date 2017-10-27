@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 10:53:51 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-26 14:51:06
+ * @Last Modified time: 2017-10-26 15:07:13
  */
 /* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
@@ -205,7 +205,8 @@ class ListViewExample extends React.Component {
 }
 
 
-export const title = 'ListView';
-export const description = 'ListView example';
+
+// export const title = 'ListView';
+// export const description = 'ListView example';
 
 export default ListViewExample;

@@ -59,7 +59,7 @@ class ImagePickerExample extends React.Component {
 
 
 
-				<Text style={styles.capture} onPress={this.takePicture.bind(this)}>[选择图片]</Text>
+				<Text style={styles.capture} onPress={this.pickImage.bind(this)}>[选择图片]</Text>
 
 
 
@@ -68,7 +68,7 @@ class ImagePickerExample extends React.Component {
 		);
 	}
 
-	takePicture() {
+	pickImage() {
 
 		var options = {
 			//底部弹出框选项

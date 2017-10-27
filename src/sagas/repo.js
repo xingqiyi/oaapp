@@ -28,7 +28,8 @@ export function* requestRepoLIST(
 			receiveRepoList(
 				// repoList.showapi_res_body.pagebean.contentlist,
 
-				repoList.items,
+				// repoList.items,//github 数组字段
+				repoList.data,//cnode 数组字段
 
 				typeId
 			)
