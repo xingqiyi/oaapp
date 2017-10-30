@@ -2,13 +2,14 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-27 11:56:02
+ * @Last Modified time: 2017-10-30 17:42:03
  */
 
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
-import { StackNavigator, TabNavigator } from 'react-navigation';
 
+import { StackNavigator, TabNavigator } from 'react-navigation';
+import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 
 // Pages:
 import NewsDetailScreen from '../pages/Discover/NewsDetailScreen';
@@ -23,7 +24,6 @@ import EchartsExample from '../pages/Admin/EchartsExample';
 import CameraExample from '../pages/Admin/CameraExample';
 import ImagePickerExample from '../pages/Admin/ImagePickerExample';
 import JpushExample from '../pages/Admin/JpushExample';
-
 
 
 
@@ -46,13 +46,11 @@ const adminIcon = require('../image/mine.png');
 const discoverIcon = require('../image/mine.png');
 const mineIcon = require('../image/mine.png');
 
-const styles = StyleSheet.create({
-	icon: {
-		width: 26,
-		height: 26
-	}
-});
 
+
+
+
+// tab
 const TabContainer = TabNavigator(
 	{
 		Msg: {
@@ -116,7 +114,8 @@ const TabContainer = TabNavigator(
 			}
 		}
 
-	}, {
+	},
+	{
 		tabBarPosition: 'bottom',
 		lazy: true, //  是否根据需要懒加载标签，而不是提前渲染
 		// animationEnabled: true, //是否在切换标签时启动动画
@@ -145,86 +144,105 @@ const TabContainer = TabNavigator(
 				position: 'relative'
 			},
 
-			// tabStyle: {   backgroundColor: '#ccc', }, labelStyle: {   fontSize: 11,
-			// paddingVertical: 0,   marginTop: -4 }, iconStyle: {   marginTop: -3 },
+			// tabStyle: {backgroundColor: '#ccc', }, labelStyle: {fontSize: 11,
+			// paddingVertical: 0,   marginTop: -4 }, iconStyle: {marginTop: -3 },
 
 		}
 
-	});
-
-const App = StackNavigator({
-	Home: {
-		screen: TabContainer
-	},
-	NewsDetail: {
-		screen: NewsDetailScreen,
-		// path: 'pages/Home',
-
-		navigationOptions: ({ navigation }) => ({
-
-			headerMode: 'float',//边缘滑动返回上级页面时动画效果。
-
-			// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
-			gesturesEnabled: true, //是否支持滑动返回收拾，iOS默认支持，安卓默认关闭
-			// gestureResponseDistance: { horizontal: 1, vertical: 1 },//对象 覆盖触摸从屏幕边缘开始的距离，以识别手势。默认值 25,135
-		})
-	},
-	NewsDetail2: {
-		// `NewsDetailScreen2`是一个React组件，将作为屏幕的主要内容。
-		screen: NewsDetailScreen2,
-		// 当`ProfileScreen`由StackNavigator加载时，它将被赋予“navigation”属性。
-		// 可选：在Web应用程序中深链接或使用react-navigation导航时，将使用此路径：  path: 'people/:name',
-		// 从路径中提取动作(action)和路由参数.
-		// 可选：覆盖屏幕的`navigationOptions`（即每个组件中的`navigationOptions`）
-		navigationOptions: ({ navigation }) => ({
-			title: `${navigation.state.params.name}'s Profile'`
-		})
-	},
-
-	FlatListExample: {
-		navigationOptions: ({ navigation }) => ({
-			headerMode: 'float',//边缘滑动返回上级页面时动画效果。
-			// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
-			gesturesEnabled: true, //是否支持滑动返回收拾，iOS默认支持，安卓默认关闭
-			// gestureResponseDistance: { horizontal: 1, vertical: 1 },//对象 覆盖触摸从屏幕边缘开始的距离，以识别手势。默认值 25,135
-		}),
-		screen: FlatListExample
-	},
-	ListViewExample: {
-		navigationOptions: ({ navigation }) => ({
-			headerMode: 'float',//边缘滑动返回上级页面时动画效果。
-			// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
-			gesturesEnabled: true, //是否支持滑动返回收拾，iOS默认支持，安卓默认关闭
-			// gestureResponseDistance: { horizontal: 1, vertical: 1 },//对象 覆盖触摸从屏幕边缘开始的距离，以识别手势。默认值 25,135
-		}),
-		screen: ListViewExample
-	},
-
-	EchartsExample: {
-		screen: EchartsExample
-	},
-
-	CameraExample: {
-		screen: CameraExample
-	},
-	ImagePickerExample: {
-		screen: ImagePickerExample
-	},
-	JpushExample: {
-		screen: JpushExample
-	},
-
-	NewsContent:
-	{
-		screen: NewsContent
-	},
-
-
-
-
-
-}
-	// , { 	mode:'modal', }
+	}
 );
+
+// stack
+const App = StackNavigator(
+	{
+		Home: {
+			screen: TabContainer
+		},
+		NewsDetail: {
+			screen: NewsDetailScreen,
+			// path: 'pages/Home',
+
+			navigationOptions: ({ navigation }) => ({
+
+				headerMode: 'none',//边缘滑动返回上级页面时动画效果。
+
+				// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
+				gesturesEnabled: true,
+				gestureResponseDistance: { horizontal: 150, vertical: 1 },
+			})
+		},
+		NewsDetail2: {
+			// `NewsDetailScreen2`是一个React组件，将作为屏幕的主要内容。
+			screen: NewsDetailScreen2,
+			// 当`ProfileScreen`由StackNavigator加载时，它将被赋予“navigation”属性。
+			// 可选：在Web应用程序中深链接或使用react-navigation导航时，将使用此路径：  path: 'people/:name',
+			// 从路径中提取动作(action)和路由参数.
+			// 可选：覆盖屏幕的`navigationOptions`（即每个组件中的`navigationOptions`）
+			navigationOptions: ({ navigation }) => ({
+				title: `${navigation.state.params.name}'s Profile'`
+			})
+		},
+
+		FlatListExample: {
+			navigationOptions: ({ navigation }) => ({
+				headerMode: 'screen',//边缘滑动返回上级页面时动画效果。
+				// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
+				gesturesEnabled: true,
+				gestureResponseDistance: { horizontal: 125, vertical: 1 },
+			}),
+			screen: FlatListExample
+		},
+		ListViewExample: {
+			navigationOptions: ({ navigation }) => ({
+				headerMode: 'float',//边缘滑动返回上级页面时动画效果。
+				// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
+				gesturesEnabled: true,
+				gestureResponseDistance: { horizontal: 150, vertical: 1 },
+			}),
+			screen: ListViewExample
+		},
+
+		EchartsExample: {
+			screen: EchartsExample
+		},
+
+		CameraExample: {
+			screen: CameraExample
+		},
+		ImagePickerExample: {
+			screen: ImagePickerExample
+		},
+		JpushExample: {
+			screen: JpushExample
+		},
+
+		NewsContent:
+		{
+			navigationOptions: ({ navigation }) => ({
+
+				headerMode: 'float',//边缘滑动返回上级页面时动画效果。
+				// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
+				gesturesEnabled: true,
+				gestureResponseDistance: { horizontal: 150, vertical: 1 },
+			}),
+
+			screen: NewsContent
+		},
+
+	}
+	, {
+		transitionConfig: getSlideFromRightTransition
+	}
+
+);
+
+
+const styles = StyleSheet.create({
+	icon: {
+		width: 26,
+		height: 26
+	}
+});
+
 
 export default App;

@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 10:53:51 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-26 15:07:13
+ * @Last Modified time: 2017-10-30 16:48:14
  */
 /* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
@@ -35,6 +35,10 @@ let pageIndex = 0;
  * @extends {React.Component}
  */
 class ListViewExample extends React.Component {
+	static navigationOptions = {
+		title: 'ListView'
+	};
+
 	constructor(props) {
 		super(props);
 		this._genData = (pIndex = 0) => {

@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-12 09:25:01 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-27 17:06:11
+ * @Last Modified time: 2017-10-30 17:34:38
  */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -40,7 +40,8 @@ const propTypes = {
  */
 export default class NewsContent extends React.Component {
 	static navigationOptions = {
-		title: '新闻详情2'
+		header: null,//不显示header
+		title: '新闻内容'
 	};
 
 	constructor(props) {

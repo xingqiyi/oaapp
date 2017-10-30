@@ -27,6 +27,9 @@ listData = [
 	{ key: 'j', value: 'jjjjjjjj' }
 ];
 class FlatListExample extends React.Component {
+	static navigationOptions = {
+		title: 'FlatList'
+	};
 
 	constructor(props) {
 		super(props);

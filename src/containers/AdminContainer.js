@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-13 10:53:25
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-26 14:57:55
+ * @Last Modified time: 2017-10-30 16:01:28
  */
 import React from 'react';
 import { connect } from 'react-redux';
@@ -54,7 +54,11 @@ class AdminScreen extends React.Component {
 					<Flex.Item style={styles.flexItem}>
 						<Button
 							style={styles.button}
-							onClick={() => navigate('FlatListExample', { user: 'jim' })}>
+							onClick={() =>
+								navigate('FlatListExample', { user: 'jim' })
+								// navigate('FlatListExample', { transition: 'forVerticalTop' })
+
+							}>
 							FlatListExample
 						</Button>
 					</Flex.Item>
@@ -164,7 +168,7 @@ class AdminScreen extends React.Component {
 
 
 
-			</View>
+			</View >
 		);
 	}
 
