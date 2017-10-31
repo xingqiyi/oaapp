@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-30 17:42:03
+ * @Last Modified time: 2017-10-31 11:02:25
  */
 
 import React from 'react';
@@ -158,6 +158,26 @@ const App = StackNavigator(
 		Home: {
 			screen: TabContainer
 		},
+
+		FlatListExample: {
+			navigationOptions: ({ navigation }) => ({
+				headerMode: 'screen',//边缘滑动返回上级页面时动画效果。
+				// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
+				gesturesEnabled: true,
+				gestureResponseDistance: { horizontal: 125, vertical: 1 },
+			}),
+			screen: FlatListExample
+		},
+		ListViewExample: {
+			navigationOptions: ({ navigation }) => ({
+				headerMode: 'float',//边缘滑动返回上级页面时动画效果。
+				headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
+				gesturesEnabled: true,
+				gestureResponseDistance: { horizontal: 150, vertical: 1 },
+			}),
+			screen: ListViewExample
+		},
+
 		NewsDetail: {
 			screen: NewsDetailScreen,
 			// path: 'pages/Home',
@@ -183,24 +203,7 @@ const App = StackNavigator(
 			})
 		},
 
-		FlatListExample: {
-			navigationOptions: ({ navigation }) => ({
-				headerMode: 'screen',//边缘滑动返回上级页面时动画效果。
-				// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
-				gesturesEnabled: true,
-				gestureResponseDistance: { horizontal: 125, vertical: 1 },
-			}),
-			screen: FlatListExample
-		},
-		ListViewExample: {
-			navigationOptions: ({ navigation }) => ({
-				headerMode: 'float',//边缘滑动返回上级页面时动画效果。
-				// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
-				gesturesEnabled: true,
-				gestureResponseDistance: { horizontal: 150, vertical: 1 },
-			}),
-			screen: ListViewExample
-		},
+
 
 		EchartsExample: {
 			screen: EchartsExample

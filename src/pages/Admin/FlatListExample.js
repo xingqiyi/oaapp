@@ -1,18 +1,43 @@
 
 import React from 'react';
-import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 
 import { Flex, Button } from 'antd-mobile';
 
 
 import PropTypes from 'prop-types';
 
+
 const propTypes = {
 	news: PropTypes.object,
 	newsActions: PropTypes.object,
+	navigation: PropTypes.object
+
 };
 
 let listData;
+let navigate;
+
+const msgIcon = require('../../image/add.png');
+let headerRight = (
+	<TouchableOpacity onPress={() => navigate('NewsDetail', { user: 'jim' })}>
+
+		<Image
+			style={[{
+				height: 32,
+				width: 32,
+				marginRight: 8
+			}
+			]}
+
+
+
+			source={
+				msgIcon
+			} />
+	</TouchableOpacity>
+
+);
 
 listData = [
 	{ key: 'a', value: 'aaaaaaaa' },
@@ -28,7 +53,9 @@ listData = [
 ];
 class FlatListExample extends React.Component {
 	static navigationOptions = {
+		headerRight: headerRight,
 		title: 'FlatList'
+
 	};
 
 	constructor(props) {
@@ -47,10 +74,6 @@ class FlatListExample extends React.Component {
 		console.info('newsList,newsAction:', newsActions);
 
 		// newsActions.requestNewsList(false, true, 2);
-
-
-
-
 	}
 
 	onRefresh = () => {
@@ -65,14 +88,15 @@ class FlatListExample extends React.Component {
 
 		const { news } = this.props;
 
+		({ navigate } = this.props.navigation);
+
+
 		console.info(news);
 
 
 		return (
 			<View>
 				<Text>Hello, my first Chat App!</Text>
-
-
 				<Button
 					className="btn"
 					type="primary"
@@ -83,9 +107,7 @@ class FlatListExample extends React.Component {
 						margin: 20
 					}}
 					onClick={() =>
-
 						this.onRefresh()
-
 					}>
 					ListViewExample
 				</Button>
