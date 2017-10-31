@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList, TouchableHighlight } from 'react-native';
 
 import { Flex, Button } from 'antd-mobile';
 
@@ -18,14 +18,14 @@ const propTypes = {
 let listData;
 let navigate;
 
-const msgIcon = require('../../image/add.png');
+const addIcon = require('../../image/add.png');
 let headerRight = (
-	<TouchableOpacity onPress={() => navigate('NewsDetail', { user: 'jim' })}>
+	<TouchableHighlight onPress={() => navigate('NewsDetail2', { user: 'jim' })}>
 
 		<Image
 			style={[{
-				height: 32,
-				width: 32,
+				height: 24,
+				width: 24,
 				marginRight: 8
 			}
 			]}
@@ -33,9 +33,9 @@ let headerRight = (
 
 
 			source={
-				msgIcon
+				addIcon
 			} />
-	</TouchableOpacity>
+	</TouchableHighlight>
 
 );
 

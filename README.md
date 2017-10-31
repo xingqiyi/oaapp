@@ -90,3 +90,9 @@ module name 指的是你 Android 项目中的模块名字(对 iOS 没有影响�
 ```
 npm run configureJPush a54d0c2cb761ba030650534a app
 ```
+
+## todo:
+1. react-navigation-slide-from-right-transition 将所有的页面设置为 fromRight,怎么设置某个页面fromButtom
+2. 打开拍照速度, 相机加载之前的动画?
+3. TabNavigator 的 headerRight 怎么实现
+4. echarts 打包后不显示图

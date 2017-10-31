@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-31 11:02:25
+ * @Last Modified time: 2017-10-31 16:23:33
  */
 
 import React from 'react';
@@ -46,6 +46,7 @@ const adminIcon = require('../image/mine.png');
 const discoverIcon = require('../image/mine.png');
 const mineIcon = require('../image/mine.png');
 
+const addIcon = require('../image/add.png');
 
 
 
@@ -152,7 +153,26 @@ const TabContainer = TabNavigator(
 	}
 );
 
-// stack
+// stack from buttom
+const StackButtom = StackNavigator(
+	{
+		// Login:{
+		// 	screen: Login
+		// },
+
+		Home: {
+			screen: EchartsExample
+		},
+
+	}
+
+	, {
+		transitionConfig: null
+	}
+
+);
+
+// stack  from right
 const App = StackNavigator(
 	{
 		Home: {
@@ -162,7 +182,7 @@ const App = StackNavigator(
 		FlatListExample: {
 			navigationOptions: ({ navigation }) => ({
 				headerMode: 'screen',//边缘滑动返回上级页面时动画效果。
-				// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
+				// headerRight: <Image source={addIcon} style={{ height: 24, width: 24 ,marginRight: 8}} />,
 				gesturesEnabled: true,
 				gestureResponseDistance: { horizontal: 125, vertical: 1 },
 			}),
@@ -171,7 +191,7 @@ const App = StackNavigator(
 		ListViewExample: {
 			navigationOptions: ({ navigation }) => ({
 				headerMode: 'float',//边缘滑动返回上级页面时动画效果。
-				headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
+				headerRight: <Image source={addIcon} style={{ height: 24, width: 24 ,marginRight: 8}} />,
 				gesturesEnabled: true,
 				gestureResponseDistance: { horizontal: 150, vertical: 1 },
 			}),
@@ -185,8 +205,7 @@ const App = StackNavigator(
 			navigationOptions: ({ navigation }) => ({
 
 				headerMode: 'none',//边缘滑动返回上级页面时动画效果。
-
-				// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
+				headerRight: <Image source={addIcon} style={{ height: 24, width: 24 ,marginRight: 8}} />,
 				gesturesEnabled: true,
 				gestureResponseDistance: { horizontal: 150, vertical: 1 },
 			})
@@ -205,9 +224,17 @@ const App = StackNavigator(
 
 
 
+		// EchartsExample: {
+		// 	screen: EchartsExample
+		// },
+
+
 		EchartsExample: {
-			screen: EchartsExample
+			screen: StackButtom
 		},
+
+
+
 
 		CameraExample: {
 			screen: CameraExample
