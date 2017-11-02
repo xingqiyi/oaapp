@@ -2,15 +2,14 @@
  * @Author: shuaixc 
  * @Date: 2017-09-12 09:25:01 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-30 17:34:38
+ * @Last Modified time: 2017-11-01 14:48:00
  */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Html from '../../components/base/Html';
-
-
 import {
+	TouchableOpacity,
+	Image,
 	ScrollView,
 	View,
 	Text,
@@ -18,6 +17,16 @@ import {
 	Dimensions,
 	Platform
 } from 'react-native';
+
+
+import Html from '../../components/base/Html';
+
+import Spinner from '../../components/base/Spinner';
+
+import CommentOverlay from '../../components/CommentOverlay';
+import { genColor, parseImgUrl } from '../../utils';
+
+
 
 
 
@@ -47,42 +56,127 @@ export default class NewsContent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { showText: 'aaa' };
+
+		this.headerColor = genColor();
+		this.state = {
+			didFocus: false
+		};
 	}
 
 	componentDidMount() {
-
-
-
+		// const { from, actions, id, topic } = this.props;
+		// if (from !== 'comment' && topic) {
+		// 	actions.getTopicById(id);
+		// }
+	}
+	componentWillFocus(haveFocus) {
+		alert('willFocus');
+	}
+	componentDidFocus(haveFocus) {
+		alert('didFocus');
+		if (!haveFocus) {
+			setTimeout(() => {
+				this.setState({
+					didFocus: true
+				});
+			});
+		}
 	}
 
-	_renderTopicHtml(topic) {
+	renderCommentOverlay(topic) {
 		return (
-			<View style={styles.content}>
-				<Html
-					router={this.props.router}
-					content={topic.content} />
-			</View>
-		);
+			// <CommentOverlay
+			// 	onPress={() => {
+			// 		this.props.router.toComment({
+			// 			topic: topic,
+			// 			id: topic.id
+			// 		});
+			// 	}}
+			// 	replyCount={topic.reply_count}
+			// />
+			<CommentOverlay
+				replyCount={topic.reply_count}
+			/>
 
-		// if (this.state.didFocus && topic && topic.content) {
-		// 	return (
-		// 		<View style={styles.content}>
-		// 			<Html
-		// 				router={this.props.router}
-		// 				content={topic.content} />
-		// 		</View>
-		// 	);
-		// }
+
+
+		);
+	}
+
+
+
+
+
+
+	renderTopicHtml(topic) {
 		// return (
-		// 	<Spinner
-		// 		size='large'
-		// 		animating
-		// 		style={{ marginTop: 20 }} />
+		// 	<View style={styles.content}>
+		// 		<Html
+		// 			router={this.props.router}
+		// 			content={topic.content} />
+		// 	</View>
 		// );
 
+		if (this.state.didFocus && topic && topic.content) {
+			// if (topic && topic.content) {
+			return (
+				<View style={styles.content}>
+					<Html
+						router={this.props.router}
+						content={topic.content} />
+				</View>
+			);
+		}
+		return (
+			<Spinner
+				size='large'
+				animating
+				style={{ marginTop: 20 }} />
+		);
+
 
 	}
 
+
+	renderContent(topic) {
+		if (topic) {
+			const imgUri = parseImgUrl(topic.author.avatar_url);
+			const authorName = topic.author.loginname;
+
+			return (
+				<ScrollView>
+					<View style={[styles.header, { backgroundColor: this.headerColor }]}>
+						<View style={styles.authorTouchable}>
+							<View style={styles.authorWrapper}>
+								<TouchableOpacity
+								>
+									<Image
+										source={{ uri: imgUri }}
+										style={styles.authorImg} />
+								</TouchableOpacity>
+							</View>
+						</View>
+
+						<View style={styles.titleWrapper}>
+							<Text style={styles.title}>
+								{topic.title}
+							</Text>
+
+						</View>
+					</View>
+
+					{this.renderTopicHtml(topic)}
+				</ScrollView>
+			);
+		}
+
+		return (
+			<Spinner
+				size='large'
+				animating
+				style={{ marginTop: 20 }} />
+		);
+	}
 
 	render() {
 
@@ -95,14 +189,20 @@ export default class NewsContent extends React.Component {
 
 
 		return (
-			<ScrollView>
+			// <ScrollView>
 
-				{/* <View style={[{ margin: 10 }]}>
-					<Text>id:{params.id}</Text>
-				</View> */}
 
-				{this._renderTopicHtml(item)}
-			</ScrollView>
+
+			// 	{this.renderTopicHtml(item)}
+			// </ScrollView>
+
+
+			<View style={[styles.container]}>
+				{this.renderContent(item)}
+
+
+				{this.props.topic && this.state.didFocus && this.props.from !== 'comment' && this.renderCommentOverlay(topic)}
+			</View>
 		);
 	}
 }

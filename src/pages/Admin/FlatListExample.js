@@ -4,7 +4,6 @@ import { View, Text, Image, StyleSheet, FlatList, TouchableHighlight } from 'rea
 
 import { Flex, Button } from 'antd-mobile';
 
-
 import PropTypes from 'prop-types';
 
 
