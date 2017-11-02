@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-27 15:16:34 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-27 16:35:22
+ * @Last Modified time: 2017-11-02 17:56:06
  */
 import React, { PureComponent } from 'react';
 import { FlatList, TouchableOpacity, Text, View } from 'react-native';
@@ -87,7 +87,7 @@ class RepoList extends PureComponent {
 
 		const { navigate } = this.props.navigation;
 
-		navigate('NewsContent', { id: id, item });
+		navigate('NewsContent', { id, item });
 
 
 	};

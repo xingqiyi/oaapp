@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-12 09:25:01 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-11-01 14:48:00
+ * @Last Modified time: 2017-11-02 17:58:33
  */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -68,6 +68,14 @@ export default class NewsContent extends React.Component {
 		// if (from !== 'comment' && topic) {
 		// 	actions.getTopicById(id);
 		// }
+
+		setTimeout(() => {
+			this.setState({
+				didFocus: true
+			});
+		});
+
+
 	}
 	componentWillFocus(haveFocus) {
 		alert('willFocus');
@@ -179,9 +187,6 @@ export default class NewsContent extends React.Component {
 	}
 
 	render() {
-
-
-
 		const { params } = this.props.navigation.state;
 
 		// const { item } = this.props;
