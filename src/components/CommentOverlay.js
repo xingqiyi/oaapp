@@ -31,7 +31,7 @@ class CommentOverlay extends Component {
 					onPress={this.props.onPress}>
 					<View style={styles.content}>
 						<Icon
-							name='ios-chatboxes'
+							name='chatboxes'
 							size={13}
 							color='white'
 							style={styles.commentIcon}

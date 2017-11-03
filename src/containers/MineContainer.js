@@ -2,12 +2,15 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 15:33:33 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-20 18:23:00
+ * @Last Modified time: 2017-11-03 17:32:36
  */
 
 import React from 'react';
-import { Image, ScrollView, View } from 'react-native';
+import { Image, ScrollView, View ,Linking} from 'react-native';
 import { List } from 'antd-mobile';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -16,6 +19,7 @@ const Brief = Item.Brief;
 const msgIcon = require('../image/koubei.png');
 
 
+const READING_REPO = 'https://cnodejs.org/';
 
 /**
  * 
@@ -34,6 +38,23 @@ export default class MineScreen extends React.Component {
 	//       style={[styles.icon, { tintColor }]}
 	//     />)
 	// };
+
+	static navigationOptions = {
+		title: '关于',
+		tabBarIcon: ({ tintColor }) =>
+			<Icon name="md-information-circle" size={25} color='#aaa' />,
+		headerRight: (
+			<Icon.Button
+				name="logo-github"
+				//backgroundColor="transparent"
+				//underlayColor="transparent"
+				activeOpacity={0.4}
+				onPress={() => Linking.openURL(READING_REPO)}
+			/>
+		)
+		
+	  };
+	 
 
 	render() {
 		return (

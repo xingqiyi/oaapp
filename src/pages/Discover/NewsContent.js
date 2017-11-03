@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-12 09:25:01 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-11-02 17:58:33
+ * @Last Modified time: 2017-11-03 17:40:30
  */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -69,11 +69,19 @@ export default class NewsContent extends React.Component {
 		// 	actions.getTopicById(id);
 		// }
 
+		// this.setState({
+		// 	didFocus: true
+		// });
+
+
+		// setTimeout 和直接写的执行顺序会不一样
 		setTimeout(() => {
 			this.setState({
 				didFocus: true
 			});
 		});
+
+		
 
 
 	}
@@ -103,18 +111,14 @@ export default class NewsContent extends React.Component {
 			// 	replyCount={topic.reply_count}
 			// />
 			<CommentOverlay
-				replyCount={topic.reply_count}
+				//replyCount={topic.reply_count}
+				replyCount = {33}
 			/>
 
 
 
 		);
 	}
-
-
-
-
-
 
 	renderTopicHtml(topic) {
 		// return (
@@ -192,21 +196,19 @@ export default class NewsContent extends React.Component {
 		// const { item } = this.props;
 		const item = params.item;
 
-
 		return (
 			// <ScrollView>
-
-
 
 			// 	{this.renderTopicHtml(item)}
 			// </ScrollView>
 
-
 			<View style={[styles.container]}>
 				{this.renderContent(item)}
 
+				{/* {this.props.topic && this.state.didFocus && this.props.from !== 'comment' && this.renderCommentOverlay(topic)} */}
+				
+				{item  && this.renderCommentOverlay(item)}
 
-				{this.props.topic && this.state.didFocus && this.props.from !== 'comment' && this.renderCommentOverlay(topic)}
 			</View>
 		);
 	}
@@ -225,9 +227,13 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		flexDirection: 'row',
+
+		paddingBottom:20,
 		paddingRight: 20,
 		paddingLeft: 20,
-		paddingTop: Platform.OS === 'ios' ? 20 : 0
+		
+		// paddingTop: Platform.OS === 'ios' ? 20 : 0
+		paddingTop:20
 	},
 	authorWrapper: {
 		width: topicAuthorWidth - 40,

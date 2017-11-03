@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-10-31 16:23:33
+ * @Last Modified time: 2017-11-03 10:47:01
  */
 
 import React from 'react';
@@ -218,7 +218,14 @@ const App = StackNavigator(
 			// 从路径中提取动作(action)和路由参数.
 			// 可选：覆盖屏幕的`navigationOptions`（即每个组件中的`navigationOptions`）
 			navigationOptions: ({ navigation }) => ({
-				title: `${navigation.state.params.name}'s Profile'`
+
+				headerMode: 'none',//边缘滑动返回上级页面时动画效果。
+				headerRight: <Image source={addIcon} style={{ height: 24, width: 24 ,marginRight: 8}} />,
+				gesturesEnabled: true,
+				gestureResponseDistance: { horizontal: 150, vertical: 1 },
+				
+				// title: `${navigation.state.params.name}'s Profile`
+				title: 'Profile'
 			})
 		},
 
@@ -253,7 +260,7 @@ const App = StackNavigator(
 				headerMode: 'float',//边缘滑动返回上级页面时动画效果。
 				// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
 				gesturesEnabled: true,
-				gestureResponseDistance: { horizontal: 150, vertical: 1 },
+				gestureResponseDistance: { horizontal: 150, vertical: 100 },
 			}),
 
 			screen: NewsContent

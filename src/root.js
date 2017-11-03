@@ -10,6 +10,7 @@ const store = configureStore();
 store.runSaga(rootSaga);
 
 
+
 const Root = () =>
 	(<Provider store={store}>
 		<App />
