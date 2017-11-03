@@ -12,6 +12,8 @@ import { Flex, Button } from 'antd-mobile';
 
 
 
+import Spinner from '../../components/base/Spinner';
+
 
 import Camera from 'react-native-camera';
 
@@ -36,6 +38,10 @@ class CameraExample extends React.Component {
 		// 	typeIds: [],
 		// 	typeList: {}
 		// };
+
+		this.state = {
+			didFocus: false
+		};
 	}
 
 	componentDidMount() {
@@ -43,11 +49,38 @@ class CameraExample extends React.Component {
 		console.info('newsList,newsAction:', newsActions);
 
 		// newsActions.requestNewsList(false, true, 2);
-
+		setTimeout(() => {
+			this.setState({
+				didFocus: true
+			});
+		});
 	}
 
 	// onRefresh = () => {
 	// };
+
+
+	renderCamera(){
+		if (this.state.didFocus ) {
+			// if (topic && topic.content) {
+			return (
+				<Camera
+					ref={(cam) => {
+						this.camera = cam;
+					}}
+					style={styles.preview}
+					aspect={Camera.constants.Aspect.fill}>
+					<Text style={styles.capture} onPress={this.takePicture.bind(this)}>[拍照]</Text>
+				</Camera>
+			);
+		}
+		return (
+			<Spinner
+				size='large'
+				animating
+				style={{ marginTop: 20 }} />
+		);
+	}
 
 	render() {
 
@@ -60,14 +93,7 @@ class CameraExample extends React.Component {
 			<View style={styles.container}>
 
 
-				{<Camera
-					ref={(cam) => {
-						this.camera = cam;
-					}}
-					style={styles.preview}
-					aspect={Camera.constants.Aspect.fill}>
-					<Text style={styles.capture} onPress={this.takePicture.bind(this)}>[拍照]</Text>
-				</Camera>}
+				{this.renderCamera()}
 
 
 
