@@ -2,7 +2,7 @@
  * @Author: shuaixc 
  * @Date: 2017-09-12 09:25:01 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-11-03 18:00:27
+ * @Last Modified time: 2017-11-06 11:18:05
  */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -81,10 +81,9 @@ export default class NewsContent extends React.Component {
 			});
 		});
 
-		
-
-
 	}
+
+
 	componentWillFocus(haveFocus) {
 		alert('willFocus');
 	}
@@ -112,10 +111,8 @@ export default class NewsContent extends React.Component {
 			// />
 			<CommentOverlay
 				//replyCount={topic.reply_count}
-				replyCount = {33}
+				replyCount={33}
 			/>
-
-
 
 		);
 	}
@@ -188,6 +185,8 @@ export default class NewsContent extends React.Component {
 				animating
 				style={{ marginTop: 20 }} />
 		);
+
+
 	}
 
 	render() {
@@ -206,8 +205,8 @@ export default class NewsContent extends React.Component {
 				{this.renderContent(item)}
 
 				{/* {this.props.topic && this.state.didFocus && this.props.from !== 'comment' && this.renderCommentOverlay(topic)} */}
-				
-				{item  && this.renderCommentOverlay(item)}
+
+				{item && this.renderCommentOverlay(item)}
 
 			</View>
 		);
@@ -228,12 +227,12 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		flexDirection: 'row',
 
-		paddingBottom:20,
+		paddingBottom: 20,
 		paddingRight: 20,
 		paddingLeft: 20,
-		
+
 		// paddingTop: Platform.OS === 'ios' ? 20 : 0
-		paddingTop:20
+		paddingTop: 20
 	},
 	authorWrapper: {
 		width: topicAuthorWidth - 40,

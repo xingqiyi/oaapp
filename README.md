@@ -94,4 +94,4 @@ npm run configureJPush a54d0c2cb761ba030650534a app
 ## todo:
 1. react-navigation-slide-from-right-transition 将所有的页面设置为 fromRight,怎么设置某个页面fromButtom
 1. 打开拍照速度, 相机加载之前的动画?
-1. echarts 打包后不显示图
+1. echarts 打包后不显示图,与rn 48 兼容不好

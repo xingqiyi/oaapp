@@ -26,6 +26,7 @@ const propTypes = {
 	newsActions: PropTypes.object,
 };
 
+let myCamera;
 
 class CameraExample extends React.Component {
 
@@ -42,7 +43,21 @@ class CameraExample extends React.Component {
 		this.state = {
 			didFocus: false
 		};
+
+
+		myCamera = <Camera
+			ref={(cam) => {
+				this.camera = cam;
+			}}
+			style={styles.preview}
+			aspect={Camera.constants.Aspect.fill}>
+			<Text style={styles.capture} onPress={this.takePicture.bind(this)}>[拍照]</Text>
+		</Camera>;
+
 	}
+
+
+
 
 	componentDidMount() {
 		const { newsActions } = this.props;
@@ -60,25 +75,33 @@ class CameraExample extends React.Component {
 	// };
 
 
-	renderCamera(){
-		if (this.state.didFocus ) {
-			// if (topic && topic.content) {
-			return (
-				<Camera
-					ref={(cam) => {
-						this.camera = cam;
-					}}
-					style={styles.preview}
-					aspect={Camera.constants.Aspect.fill}>
-					<Text style={styles.capture} onPress={this.takePicture.bind(this)}>[拍照]</Text>
-				</Camera>
-			);
+	renderCamera() {
+		if (this.state.didFocus) {
+			// return (
+			// 	<Camera
+			// 		ref={(cam) => {
+			// 			this.camera = cam;
+			// 		}}
+			// 		style={styles.preview}
+			// 		aspect={Camera.constants.Aspect.fill}>
+			// 		<Text style={styles.capture} onPress={this.takePicture.bind(this)}>[拍照]</Text>
+			// 	</Camera>
+			// );
+
+			return myCamera;
 		}
 		return (
-			<Spinner
-				size='large'
-				animating
-				style={{ marginTop: 20 }} />
+			<View style={styles.loadingContainer}>
+
+
+				<Text style={styles.loadingText}>正在加载...</Text>
+				{/* <Spinner
+					size='large'
+					animating
+					style={{ marginTop: 20 }} /> */}
+
+			</View >
+
 		);
 	}
 
@@ -92,10 +115,10 @@ class CameraExample extends React.Component {
 		return (
 			<View style={styles.container}>
 
+				<View style={styles.cameraBox}>
+				</View>
 
 				{this.renderCamera()}
-
-
 
 			</View>
 		);
@@ -111,23 +134,61 @@ class CameraExample extends React.Component {
 }
 
 const styles = StyleSheet.create({
+
+
+
 	container: {
 		flex: 1,
 		flexDirection: 'row',
+
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	preview: {
+
+		height: '100%',
 		flex: 1,
 		justifyContent: 'flex-end',
 		alignItems: 'center'
 	},
 	capture: {
 		flex: 0,
+
 		backgroundColor: '#fff',
 		borderRadius: 5,
 		color: '#000',
 		padding: 10,
 		margin: 40
+	},
+
+	loadingContainer: {
+		width: '100%',
+		height: '100%',
+		backgroundColor: '#000',
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+
+	cameraBox: {
+		width: 200,
+		height: 200,
+
+		zIndex: 1,
+		position: 'absolute',
+
+		borderWidth: 1,
+		borderColor: '#00f',
+
+		// justifyContent: 'center',
+		// alignItems: 'center'
+
+	},
+	loadingText: {
+		color: '#fff',
+		fontSize: 16,
+
 	}
+
 });
 
 export default CameraExample;

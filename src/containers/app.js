@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-11-03 10:47:01
+ * @Last Modified time: 2017-11-06 09:43:39
  */
 
 import React from 'react';
@@ -191,7 +191,7 @@ const App = StackNavigator(
 		ListViewExample: {
 			navigationOptions: ({ navigation }) => ({
 				headerMode: 'float',//边缘滑动返回上级页面时动画效果。
-				headerRight: <Image source={addIcon} style={{ height: 24, width: 24 ,marginRight: 8}} />,
+				headerRight: <Image source={addIcon} style={{ height: 24, width: 24, marginRight: 8 }} />,
 				gesturesEnabled: true,
 				gestureResponseDistance: { horizontal: 150, vertical: 1 },
 			}),
@@ -205,7 +205,7 @@ const App = StackNavigator(
 			navigationOptions: ({ navigation }) => ({
 
 				headerMode: 'none',//边缘滑动返回上级页面时动画效果。
-				headerRight: <Image source={addIcon} style={{ height: 24, width: 24 ,marginRight: 8}} />,
+				headerRight: <Image source={addIcon} style={{ height: 24, width: 24, marginRight: 8 }} />,
 				gesturesEnabled: true,
 				gestureResponseDistance: { horizontal: 150, vertical: 1 },
 			})
@@ -220,10 +220,10 @@ const App = StackNavigator(
 			navigationOptions: ({ navigation }) => ({
 
 				headerMode: 'none',//边缘滑动返回上级页面时动画效果。
-				headerRight: <Image source={addIcon} style={{ height: 24, width: 24 ,marginRight: 8}} />,
+				headerRight: <Image source={addIcon} style={{ height: 24, width: 24, marginRight: 8 }} />,
 				gesturesEnabled: true,
 				gestureResponseDistance: { horizontal: 150, vertical: 1 },
-				
+
 				// title: `${navigation.state.params.name}'s Profile`
 				title: 'Profile'
 			})
@@ -244,8 +244,16 @@ const App = StackNavigator(
 
 
 		CameraExample: {
+			navigationOptions: ({ navigation }) => ({
+
+				headerMode: 'none',//边缘滑动返回上级页面时动画效果。
+				headerRight: <Image source={addIcon} style={{ height: 24, width: 24, marginRight: 8 }} />,
+				gesturesEnabled: true,
+				gestureResponseDistance: { horizontal: 150, vertical: 1 },
+			}),
 			screen: CameraExample
 		},
+
 		ImagePickerExample: {
 			screen: ImagePickerExample
 		},
