@@ -2,7 +2,7 @@
  * @Author: shuaixc
  * @Date: 2017-09-12 12:14:18
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-11-06 09:43:39
+ * @Last Modified time: 2018-01-23 22:28:02
  */
 
 import React from 'react';
@@ -11,7 +11,7 @@ import { Image, StyleSheet } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 
-// Pages:
+// Pages: 
 import NewsDetailScreen from '../pages/Discover/NewsDetailScreen';
 import NewsDetailScreen2 from '../pages/Discover/NewsDetailScreen2';
 import NewsContent from '../pages/Discover/NewsContent';
@@ -21,9 +21,15 @@ import ListViewExample from '../pages/Admin/ListViewExample';
 import FlatListExample from '../pages/Admin/FlatListExample';
 import SectionListExample from '../pages/Admin/SectionListExample';
 import EchartsExample from '../pages/Admin/EchartsExample';
-import CameraExample from '../pages/Admin/CameraExample';
-import ImagePickerExample from '../pages/Admin/ImagePickerExample';
-import JpushExample from '../pages/Admin/JpushExample';
+
+
+
+import CameraExample from '../pages/Admin/FlatListExample';
+import ImagePickerExample from '../pages/Admin/FlatListExample';
+import JpushExample from '../pages/Admin/FlatListExample';
+// import CameraExample from '../pages/Admin/CameraExample';
+// import ImagePickerExample from '../pages/Admin/ImagePickerExample';
+// import JpushExample from '../pages/Admin/JpushExample';
 
 
 
@@ -262,17 +268,17 @@ const App = StackNavigator(
 		},
 
 		NewsContent:
-		{
-			navigationOptions: ({ navigation }) => ({
+			{
+				navigationOptions: ({ navigation }) => ({
 
-				headerMode: 'float',//边缘滑动返回上级页面时动画效果。
-				// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
-				gesturesEnabled: true,
-				gestureResponseDistance: { horizontal: 150, vertical: 100 },
-			}),
+					headerMode: 'float',//边缘滑动返回上级页面时动画效果。
+					// headerRight: <Image source={msgIcon} style={{ height: 30, width: 30 }} />,
+					gesturesEnabled: true,
+					gestureResponseDistance: { horizontal: 150, vertical: 100 },
+				}),
 
-			screen: NewsContent
-		},
+				screen: NewsContent
+			},
 
 	}
 	, {

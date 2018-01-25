@@ -2,11 +2,11 @@
  * @Author: shuaixc 
  * @Date: 2017-09-13 15:33:33 
  * @Last Modified by: shuaixc
- * @Last Modified time: 2017-11-03 17:32:36
+ * @Last Modified time: 2018-01-23 22:53:59
  */
 
 import React from 'react';
-import { Image, ScrollView, View ,Linking} from 'react-native';
+import { Image, ScrollView, View, Linking } from 'react-native';
 import { List } from 'antd-mobile';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -41,20 +41,20 @@ export default class MineScreen extends React.Component {
 
 	static navigationOptions = {
 		title: '关于',
-		tabBarIcon: ({ tintColor }) =>
-			<Icon name="md-information-circle" size={25} color='#aaa' />,
-		headerRight: (
-			<Icon.Button
-				name="logo-github"
-				//backgroundColor="transparent"
-				//underlayColor="transparent"
-				activeOpacity={0.4}
-				onPress={() => Linking.openURL(READING_REPO)}
-			/>
-		)
-		
-	  };
-	 
+		// tabBarIcon: ({ tintColor }) =>
+		// 	<Icon name="md-information-circle" size={25} color='#aaa' />,
+		// headerRight: (
+		// 	<Icon.Button
+		// 		name="logo-github"
+		// 		//backgroundColor="transparent"
+		// 		//underlayColor="transparent"
+		// 		activeOpacity={0.4}
+		// 		onPress={() => Linking.openURL(READING_REPO)}
+		// 	/>
+		// )
+
+	};
+
 
 	render() {
 		return (
@@ -94,7 +94,7 @@ export default class MineScreen extends React.Component {
 							<Image
 								source={{
 									uri:
-									'https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png'
+										'https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png'
 								}}
 								style={{ width: 29, height: 29 }}
 							/>
